@@ -32,7 +32,6 @@
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
               "./node_modules/froala-editor/css/froala_style.min.css"
-
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
@@ -132,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "client"
+    }
+  },
+  "defaultProject": "client",
+  "cli": {
+    "analytics": false
+  }
 }
