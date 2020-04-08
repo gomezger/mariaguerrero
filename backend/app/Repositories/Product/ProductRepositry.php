@@ -2,41 +2,31 @@
 namespace App\Repositories\Product;
 use App\Models\Product;
 
-class ProductRepository implements ProductInterfaceRepository{
-    private Product $myProduct;
-
-    public function __construct(){
-        $this->myProduct=new Product();
-    }
-
-    public function getModel(){
-        return $this->myProduct;
-    }
-
-    public function findById($id){
+class ProductRepository {
+    public static function findById($id){
         return Product::find($id);
     }
     
-    public function findAll(){
+    public static function findAll(){
         return Product::all();
     }
 
-    public function delete($id){
+    public static function delete($id){
         Product::detroy($id);
     }
 
-    public function update($id,$params){
-        $product = $this->findById($id);
+    public static function update($id,$params){
+        $product = self::findById($id);
         $formatArrayData=json_decode($params,true); 
         //Function update need an array
         $product->update($formatArrayData);
 
     }
 
-    public function insert($params){
+    public static function insert($params){
         Product::create($params);
     }
 
-    public function getProductByCategory($category){} 
+    public static function getProductByCategory($category){} 
 
 }
