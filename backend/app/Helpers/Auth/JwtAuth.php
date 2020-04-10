@@ -4,7 +4,7 @@ namespace App\Helpers\Auth;
 use Firebase\JWT\JWT;
 use App\Helpers\Auth\AuthInterface;
 use Illuminate\Support\Facades\BD;
-use App\User;
+use App\Models\User;
 
 class JwtAuth implements AuthInterface{
 
