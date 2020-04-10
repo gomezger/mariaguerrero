@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
 			
             $table->increments('id');
             $table->string('title', 100);
-			$table->string('image', 100)->default('image.jpg');
+			$table->text('image');
 			$table->longText('description');
             $table->integer('category_id')->unsigned()->nullable();
         });
