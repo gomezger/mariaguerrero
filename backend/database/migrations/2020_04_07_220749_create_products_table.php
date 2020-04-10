@@ -13,8 +13,25 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+			$table->engine = 'InnoDB';	
+			$table->charset = 'utf8';
+			$table->collation = 'utf8_unicode_ci';
+			
+            $table->increments('id');
+            $table->string('title', 100);
+			$table->string('image', 100)->default('image.jpg');
+			$table->longText('description');
+            $table->integer('category_id')->unsigned()->nullable();
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+			
+            $table->foreign('category_id')
+			  ->references('id')->on('categories')
+			  ->onDelete('restrict');			  
+			
             $table->timestamps();
         });
     }
