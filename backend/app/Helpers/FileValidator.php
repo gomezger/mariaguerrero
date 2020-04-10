@@ -8,10 +8,7 @@ class FileValidator{
     public function __construct(){}
 
     public function validate($file,$condition){
-        $validar=\Validar::make(['archivo'=>$file],['[archivo]'=>$condition]);
-        if ($validar) return true;
-        else{
-            throw new InvalidFileException('Formato del archivo invalido.');
-        }
+        $validar=\Validar::make(['archivo'=>$file],['archivo'=>$condition]);
+        if (!$validar)throw new InvalidFileException('Formato del archivo invalido.');
     } 
 }
