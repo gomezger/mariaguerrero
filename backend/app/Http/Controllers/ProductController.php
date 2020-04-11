@@ -13,19 +13,15 @@ class ProductController extends Controller
 {
 
     public function insert(Request $request){ 
-        try{
-            $requestParams = json_decode($request->input('json'),true);
+        $requestParams = json_decode($request->input('json'),true);
 
-            // upload image
-            FileValidator::validate($request->file('file'),'mimes:jpeg,gif,png|required');
-            $requestParams['file'] = FileUploader::upload($request->file('file'),'public');
+        // upload image
+        FileValidator::validate($request->file('file'),'mimes:jpeg,gif,png|required');
+        $requestParams['file'] = FileUploader::upload($request->file('file'),'public');
 
-            $product = ProductRepository::insert($requestParams);
-            $data = Response::success('Producto subido','producto',$product);
-
-        }catch(InvalidFileException $e){
-            $data= Response::error(200,$e->getMessage());
-        }
+        $product = ProductRepository::insert($requestParams);
+        $data = Response::success('Producto subido','producto',$product);
+        
         return $data;
     }
 }

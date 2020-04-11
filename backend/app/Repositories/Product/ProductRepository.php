@@ -26,8 +26,8 @@ class ProductRepository {
     }
 
     public static function insert($params){
-        //return Product::create($params);
-        return new Product();
+        return Product::create($params);
+        //return new Product();
     }
 
     public static function getProductByCategory($category){} 
