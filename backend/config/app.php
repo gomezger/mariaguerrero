@@ -232,7 +232,7 @@ return [
         'FileValidator' => App\Helpers\Validator\FileValidator::class,
         'FileUploader' => App\Helpers\File\FileUploader::class,
         'Response' => App\Helpers\Response\Response::class,
-        'Auth' => App\Helpers\Auth\JwtAuth::class,
+        'AuthToken' => App\Helpers\Auth\JwtAuth::class,
 
         //Repositories
         'ProductRepo' => App\Repositories\Product\ProductRepo::class,

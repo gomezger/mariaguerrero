@@ -5,6 +5,7 @@ use Firebase\JWT\JWT;
 use App\Helpers\Auth\AuthInterface;
 use Illuminate\Support\Facades\BD;
 use App\Models\User;
+use App\Exceptions\AuthException;
 
 class JwtAuth implements AuthInterface{
 
@@ -21,13 +22,10 @@ class JwtAuth implements AuthInterface{
         $data = $this->getToken($email, $password);
 
         // si es un string, es porque existe el usuario y lo decodifico
-        if(is_string($data)){
-            return JWT::decode($data,$this->key,['HS256']);
-
-        // no existe el usuario
-        }else{
-            return $data;
-        }
+        if(is_string($data))
+            return JWT::decode($data,$this->key,['HS256']);        
+        else
+            throw new AuthException(['El usuario o contraseña incorrecto']);          
     }
 
     /**
@@ -35,10 +33,7 @@ class JwtAuth implements AuthInterface{
      */
     public function getToken($email, $password){
         // buscar si existe el usuario con sus credenciales
-        $usuario = User::where([
-                    'email' => $email,
-                    'password' => $password
-                ])->first();
+        $usuario = User::where(['email' => $email, 'password' => $password ])->first();
 
         //Comprobar si son correctos (objetos) 
         //generar Token con los datos del usuario idetificado
@@ -53,14 +48,8 @@ class JwtAuth implements AuthInterface{
 
             $data = JWT::encode($token, $this->key, 'HS256');
 
-        }else{
-
-            $data = array(
-                'status' => 'error',
-                'errores' => ['El usuario o contraseña incorrecto']
-            );
-
-        }
+        }else       
+            throw new AuthException(['El usuario o contraseña incorrecto']);   
 
         return $data;        
     }
@@ -78,13 +67,12 @@ class JwtAuth implements AuthInterface{
             if(is_object($decoded))
                 return true;
             else
-                return false;            
+                return false;  
 
 		}catch(\UnexpectedValueException $e){
-            return false;
+            throw new AuthException(['Envie el token por header']);    
 		}catch(\DomainException $e){
-			echo $e->getMessage();
-            return false;
+            throw new AuthException(['El token no es válido']);    
 		}
 	}
 
@@ -104,10 +92,9 @@ class JwtAuth implements AuthInterface{
                 return null;            
 
 		}catch(\UnexpectedValueException $e){
-            return null;
+            throw new AuthException(['Envie el token por header']);   
 		}catch(\DomainException $e){
-			echo $e->getMessage();
-            return null;
+            throw new AuthException(['El token no es válido']);    
 		}
     }
 }
