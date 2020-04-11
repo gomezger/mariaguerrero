@@ -1,16 +1,16 @@
 <?php
 namespace App\Helpers\Validator;
 
-use App\Exception\InvalidFileException;
 use App\Helpers\Validator\Validator;
+use App\Exceptions\InvalidFileException;
 
 class FileValidator extends Validator{
     
     public function __construct(){}
 
-    public function validate($file,$condition){
-        $validate = \Validar::make(['archivo'=>$file],['archivo'=>$condition]);
+    public static function validate($file,$condition){
+        $validate = \Validator::make(['archivo'=>$file],['archivo'=>$condition]);
         if ($validate->fails())
-            throw new InvalidFileException($this->errores($validate->errors())[0]);
+            throw new InvalidFileException(self::errores($validate->errors())[0]);
     } 
 }

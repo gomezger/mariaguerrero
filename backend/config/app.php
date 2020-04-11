@@ -227,10 +227,15 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        //Helpers
         'FileValidator' => App\Helpers\Validator\FileValidator::class,
         'FileUploader' => App\Helpers\File\FileUploader::class,
-        'Auth' => App\Helpers\Auth\JwtAuth::class,
         'Response' => App\Helpers\Response\Response::class,
+        'Auth' => App\Helpers\Auth\JwtAuth::class,
+
+        //Repositories
+        'ProductRepository' => App\Repositories\Product\ProductRepository::class,
 
     ],
 

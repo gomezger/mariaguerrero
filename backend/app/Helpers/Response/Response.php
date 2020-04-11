@@ -6,7 +6,7 @@ class Response{
     /**
      * @message: string
      */
-    public function success($message, $name_object, $object){
+    public static function success($message, $name_object, $object){
         return array(
             "status" => "success",
             "code" => 200,
@@ -20,7 +20,7 @@ class Response{
      * @message: string
      * @errors: string array
      */
-    public function error($code, $message, $errors){
+    public static function error($code, $message, $errors){
         return array(
             "status" => "error",
             "code" => $code,

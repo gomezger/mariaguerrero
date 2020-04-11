@@ -13,12 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['cors']], function () {
+
+    //products
+    Route::post('products', 'ProductController@insert');
+
 });
-
-
-
-//products
-Route::post('/products', 'ProductController@insert');
-

@@ -3,7 +3,7 @@ namespace App\Helpers\Validator;
 
 abstract class Validator{
     
-    protected function errores($arreglo_validator){
+    protected static function errores($arreglo_validator){
         $arreglo = json_decode(json_encode($arreglo_validator), true);
         $errores = array();
         foreach($arreglo as $error_por_tipo)
