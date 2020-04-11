@@ -20,9 +20,7 @@ class ProductController extends Controller
             FileValidator::validate($request->file('file'),'mimes:jpeg,gif,png|required');
             $requestParams['file'] = FileUploader::upload($request->file('file'),'public');
 
-            $repo = new ProductRepository();
-            $product = $repo->insert($requestParams);
-
+            $product = ProductRepository::insert($requestParams);
             $data = Response::success('Producto subido','producto',$product);
 
         }catch(InvalidFileException $e){

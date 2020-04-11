@@ -25,7 +25,7 @@ class ProductRepository {
 
     }
 
-    public function insert($params){
+    public static function insert($params){
         //return Product::create($params);
         return new Product();
     }
