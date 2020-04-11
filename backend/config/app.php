@@ -235,7 +235,7 @@ return [
         'Auth' => App\Helpers\Auth\JwtAuth::class,
 
         //Repositories
-        'ProductRepository' => App\Repositories\Product\ProductRepository::class,
+        'ProductRepo' => App\Repositories\Product\ProductRepo::class,
 
     ],
 

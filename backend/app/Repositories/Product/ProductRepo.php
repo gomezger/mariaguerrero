@@ -3,7 +3,7 @@
 namespace App\Repositories\Product;
 use App\Models\Product;
 
-class ProductRepository {
+class ProductRepo {
     
     public static function findById($id){
         return Product::find($id);
@@ -27,7 +27,6 @@ class ProductRepository {
 
     public static function insert($params){
         return Product::create($params);
-        //return new Product();
     }
 
     public static function getProductByCategory($category){} 

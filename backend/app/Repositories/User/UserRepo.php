@@ -1,30 +1,31 @@
 <?php
-namespace App\Repositories\Category;
-use App\Models\Category;
+namespace App\Repositories\User;
+use App\Models\User;
 
-class CategoryRepository {
+class UserRepo {
     public static function findById($id){
-        return Category::find($id);
+        return User::find($id);
     }
     
     public static function findAll(){
-        return Category::all();
+        return User::all();
     }
 
     public static function delete($id){
-        Category::detroy($id);
+        User::detroy($id);
     }
 
     public static function update($id,$params){
-        $category = self::findById($id);
+        $user = self::findById($id);
         $formatArrayData=json_decode($params,true); 
         //Function update need an array
-        $category->update($formatArrayData);
+        $user->update($formatArrayData);
 
     }
 
     public static function insert($params){
-        Category::create($params);
+        User::create($params);
     }
+
 
 }

@@ -6,8 +6,6 @@ use App\Exceptions\InvalidFileException;
 
 class FileValidator extends Validator{
     
-    public function __construct(){}
-
     public static function validate($file,$condition){
         $validate = \Validator::make(['archivo'=>$file],['archivo'=>$condition]);
         if ($validate->fails())
