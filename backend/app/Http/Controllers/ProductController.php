@@ -39,7 +39,7 @@ class ProductController extends Controller
 
     public function getById($id){
         $product = ProductRepo::findById($id);
-        return Response::success('Producto subido','producto',$product);
+        return Response::success('Producto cargado','producto',$product);
     }
 
     public function update($id,Request $request){
@@ -62,6 +62,7 @@ class ProductController extends Controller
         ProductRepo::delete($id);
     }    
 
+    //La idea es usar estos metodos en los de arriba para ahorrar codigo    
     private function getData(Request $request){
         $requestParams = json_decode($request->input('json'),true);
     }
