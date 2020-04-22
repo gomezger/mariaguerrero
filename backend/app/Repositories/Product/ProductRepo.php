@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Product;
 use App\Models\Product;
+use App\Exceptions\ProductException;
 
 class ProductRepo {
     
@@ -14,15 +15,23 @@ class ProductRepo {
     }
 
     public static function delete($id){
-        Product::detroy($id);
+        $product = self::findById($id);
+
+        if(is_null($product))
+            throw new ProductException(['El producto no existe']);
+
+        return Product::destroy($id);
     }
 
     public static function update($id,$params){
         $product = self::findById($id);
-        $formatArrayData=json_decode($params,true); 
+
+        if(is_null($product))
+            throw new ProductException(['El producto no existe']);
+
         //Function update need an array
         $product->update($formatArrayData);
-
+        return $producto;
     }
 
     public static function insert($params){
