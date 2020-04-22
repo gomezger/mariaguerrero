@@ -3,6 +3,7 @@ namespace App\Helpers\Auth;
 
 use Firebase\JWT\JWT;
 use App\Helpers\Auth\AuthInterface;
+use App\Repositories\User\UserRepo;
 use Illuminate\Support\Facades\BD;
 use App\Models\User;
 use App\Exceptions\AuthException;
@@ -33,15 +34,18 @@ class JwtAuth implements AuthInterface{
      */
     public function getToken($email, $password){
         // buscar si existe el usuario con sus credenciales
-        $usuario = User::where(['email' => $email, 'password' => $password ])->first();
+        $user = UserRepo::find([
+                                ['key'=>'email','condition'=>'=','value'=>$email],
+                                ['key'=>'password','condition'=>'=','value'=>$password]
+                              ]);
 
         //Comprobar si son correctos (objetos) 
         //generar Token con los datos del usuario idetificado
-        if(is_object($usuario)){
+        if(is_object($user)){
             $token = array(
-                'sub' => $usuario->id,
-                'name' => $usuario->name,
-                'email' => $usuario->email,
+                'sub' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'iat' => time(),
                 'exp' => time() + (7 * 24 * 60 * 60) //dura una semana (semana*dia*minutos*segundos)
             );

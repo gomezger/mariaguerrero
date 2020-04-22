@@ -21,7 +21,7 @@ class AuthMiddleware
 		$hash = $request->header('Authorization',null);				
         $jwtAuth = new JwtAuth();
                 
-        if(!$jwtAuth->checkToken($hash)){
+        if(is_null($hash) || !$jwtAuth->checkToken($hash)){
             $data = Resp::error(1000,'Error al verificar token','No inició sesión');
             return response()->json($data,200);	
         }
