@@ -27,6 +27,5 @@ class Response{
             "message" => $message,
             "errors" => $errors
         );
-    }
-    
+    }    
 }

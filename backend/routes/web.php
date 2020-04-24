@@ -38,4 +38,8 @@ Route::group(['middleware' => ['cors']], function () {
     // users
     Route::post('users/login', 'UserController@login');  
 
+    //mail
+    Route::post('contact', 'SendEmailController@contact');
+    Route::post('budget', 'SendEmailController@budget');
+
 });
