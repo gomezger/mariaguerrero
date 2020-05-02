@@ -1,1 +1,73 @@
-<p>header works!</p>
+<header class="clearfix">
+    <div class="container">
+        <h2 class="slogan float-left ml-1 ml-md-0">
+            Este es el slogan de la página
+            <span class="ocultar"> un poco mas</span>
+        </h2>
+
+        <div class="derecha float-right">
+            <h3 class="info float-left mr-4 d-none d-md-inline-block">
+                <i class="fas fa-map-marker-alt mr-1"></i> 
+                {{ city }}
+            </h3>
+            <div class="info telefono float-left mr-1">
+                <a href="tel:02914526024">
+                <i class="fas fa-phone mr-1 text-light"></i>
+                </a>
+                <span class="d-none d-md-inline-block mr-3">
+                {{ phone.cod.int }}
+                {{ phone.cod.nac }}
+                {{ phone.number }}
+                </span>
+            </div>
+
+
+            <div class="redes float-left mr-1 mr-md-0">
+                <a [href]="social.facebook.url" class="text-light mr-2 mr-md-2" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a [href]="social.instagram.url" class="text-light mr-2 mr-md-2" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a 
+                    [href]="'https://api.whatsapp.com/send?phone='+social.whatsapp.cod.int+''+social.whatsapp.cod.nac+''+social.whatsapp.number" 
+                    class="text-light" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+  
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    
+    <a class="navbar-brand" href="#">
+        <img src="/assets/logo/logo.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar-right ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">productos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            categorías
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contacto</a>
+        </li>
+      </ul>
+    </div>
+</div>
+  </nav>

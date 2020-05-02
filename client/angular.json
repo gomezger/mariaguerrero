@@ -31,7 +31,8 @@
               "src/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-              "./node_modules/froala-editor/css/froala_style.min.css"
+              "./node_modules/froala-editor/css/froala_style.min.css",
+              "src/assets/fontawesome-5.13.0/css/all.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",

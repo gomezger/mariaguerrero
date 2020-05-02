@@ -7,10 +7,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { IndexComponent } from './index/index.component';
 import { ContactComponent } from './contact/contact.component';
+import { CarouselComponent } from './index/carousel/carousel.component';
 
 
 @NgModule({
-  declarations: [WebComponent, HeaderComponent, FooterComponent, IndexComponent, ContactComponent],
+  declarations: [WebComponent, HeaderComponent, FooterComponent, IndexComponent, ContactComponent, CarouselComponent],
   imports: [
     CommonModule,
     WebRoutingModule
