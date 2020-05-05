@@ -1,0 +1,63 @@
+
+.title-service{
+    float: left;
+    background-attachment: fixed;
+    background-image: url('/assets/folder/bg-completo.jpeg');
+    background-size: 100% auto;
+    background-position: center;
+}
+.title-service .gradient{
+    float: left;
+    background-color: rgba(0,0,0,0.6);
+    min-height: 200px;
+}
+
+.products{
+    margin: 40px 0;
+}
+
+.product{
+    width: 25%;
+    padding: 10px;
+}
+
+.product .content{
+    background-color: rgb(218, 218, 218);
+    min-height: 300px;
+}
+
+@media only screen and (max-width: 1410px) {    
+}
+
+@media only screen and (max-width: 1199px) { 
+
+}
+
+@media only screen and (max-width: 991px) {	
+    .product{
+        width: 50%;
+        padding: 10px;
+    }
+    
+    .container{
+        max-width: 100% !important;
+    }
+
+    .title-service{
+        background-size: auto 100% ;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    
+}
+
+@media only screen and (max-width: 575px) {
+    .product{
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+}

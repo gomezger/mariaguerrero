@@ -10,10 +10,11 @@ import { ContactComponent } from './contact/contact.component';
 import { CarouselComponent } from './index/carousel/carousel.component';
 import { AboutUsComponent } from './index/about-us/about-us.component';
 import { TitleComponent } from './components/title/title.component';
+import { ProductsComponent } from './index/products/products.component';
 
 
 @NgModule({
-  declarations: [WebComponent, HeaderComponent, FooterComponent, IndexComponent, ContactComponent, CarouselComponent, AboutUsComponent, TitleComponent],
+  declarations: [WebComponent, HeaderComponent, FooterComponent, IndexComponent, ContactComponent, CarouselComponent, AboutUsComponent, TitleComponent, ProductsComponent],
   imports: [
     CommonModule,
     WebRoutingModule

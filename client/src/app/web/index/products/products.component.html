@@ -1,0 +1,19 @@
+<section class="float-left title-service col-12 p-0">
+    <div class="gradient float-left col-12 p-0">
+      <div class="container text-center pt-3">
+          <app-title [title]="'Catálogo'"  id="catalogo" [id]="'catalogo'" [color]="'#EEEEEE'"></app-title>
+
+          <div class="products col-12 p-0 text-center">
+            <div *ngFor="let p of [1,2,3,4]" class="product d-inline-block">
+                <div class="content col-12">
+                    {{p}}
+                </div>
+            </div>
+          </div>     
+
+      </div>
+    </div>
+  </section>
+  
+  
+  <div class="clearfix"></div>
