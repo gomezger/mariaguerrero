@@ -1,0 +1,23 @@
+
+
+.about{
+    font-size: 22px;
+    background-image: url('/assets/textures/bg-white.jpg');
+    background-size: 100% auto;
+}
+
+.iconos{
+    font-size: 50px;
+}
+
+
+@media only screen and (max-width: 991px) {	
+    .about{
+        font-size: 14px;
+        background-size: auto 100% ;
+    }
+    
+    .iconos{
+        font-size: 35px;
+    }
+}
