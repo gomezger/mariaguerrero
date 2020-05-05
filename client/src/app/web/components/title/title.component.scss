@@ -1,0 +1,17 @@
+
+
+h1{
+    font-family: 'gilroy-ligth', 'Lexend Giga', sans-serif;
+    color: rgb(33, 59, 59);
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+
+
+@media only screen and (max-width: 991px) {	
+    h1{
+        font-size: 20px;
+    }
+    
+}
