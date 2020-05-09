@@ -13,7 +13,7 @@ class JwtAuth implements AuthInterface{
     public $key;
 
     public function __construct(){
-        $this->key = 'the most difficult key of the world $%&/()·';
+        $this->key = \Config::get('app.jwt_pass');
     }
 
     /**
