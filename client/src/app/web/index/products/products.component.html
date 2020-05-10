@@ -1,15 +1,19 @@
 <section class="float-left title-service col-12 p-0">
-    <div class="gradient float-left col-12 p-0">
+    <div class="gradient float-left col-12 p-0 pb-3">
       <div class="container text-center pt-3">
-          <app-title [title]="'Catálogo'"  id="catalogo" [id]="'catalogo'" [color]="'#EEEEEE'"></app-title>
+          <app-title [title]="'Catálogo'"  id="catalogo" [id]="'catalogo'" [color]="'#EDEDED'"></app-title>
 
-          <div class="products col-12 p-0 text-center">
-            <div *ngFor="let p of [1,2,3,4]" class="product d-inline-block">
-                <div class="content col-12">
-                    {{p}}
+          <a [routerLink]="['/producto/123123']" class="products col-12 p-0 text-center">
+            <div *ngFor="let p of [[1,'Sofa Boracay'],[2,'Mesa de luz Village'],[3,'Escritorio Islandia']]" class="product d-inline-block mt-2 mb-2">
+                <div class="content col-12 p-0">
+                    <div class="imagen" [style.backgroundImage]="'url(assets/products/image'+p[0]+'.jpg)'"></div>
+                    <h3>
+                      <div class="background col-12 h-100 p-0 m-0"></div>
+                      <span>{{p[1]}}</span>
+                    </h3>
                 </div>
             </div>
-          </div>     
+          </a>     
 
       </div>
     </div>

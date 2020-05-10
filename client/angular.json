@@ -29,6 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/scss/animate.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
               "./node_modules/froala-editor/css/froala_style.min.css",

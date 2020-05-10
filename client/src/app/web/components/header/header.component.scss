@@ -14,11 +14,9 @@ header .slogan, header .info{
     margin-bottom: 0;
 }
 
-
 header .info.telefono{
     padding-top: 3.5px;
 }
-
 
 .navbar{
     background-image: -webkit-gradient(linear, left top, right top,	color-stop(0, rgb(34, 34, 34)),	color-stop(1, rgb(15, 15, 15)));
@@ -57,12 +55,14 @@ header .info.telefono{
     border-bottom: solid 2px rgba(0,0,0,0);
     font-family: 'Montserrat', cursive;
     font-size: 14px;
+    cursor: pointer;
 }
 .navbar .navbar-nav .nav-item a.nav-link:hover{    
     color: rgb(57, 58, 59);
     border-bottom: solid 2px $colorBlueLight;
     transition: 0.5s;
 }
+
 
 
 .flag-selection{
