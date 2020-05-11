@@ -1,0 +1,42 @@
+<div class="float-left title col-12 p-0">
+    <div class="gradient float-left col-12 p-0 pb-3">
+      <div class="container text-center pt-3">
+          <h2 class="animated fadeInDown">Muebles y objetos</h2>
+      </div>
+    </div>
+</div>
+
+<div class="menu col-12 float-left">
+    <div class="container">       
+        <div class="dropdown show pl-3 float-left">
+            <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categorías
+            </button>   
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Sillas</a>
+                <a class="dropdown-item" href="#">Sillones</a>
+                <a class="dropdown-item" href="#">Mesas</a>
+            </div>
+        </div>
+        
+        <form class="form-inline my-2 my-lg-0 float-right mr-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+    </div>
+</div>
+
+<section class="products col-12 mt-4 float-left">
+    <div class="container">       
+        <app-min 
+            [size]="4" 
+            *ngFor="let p of [0,1,2,3,4,5,6,7,8,9,10,11]  | paginate: { itemsPerPage: 9, currentPage: p }"
+        ></app-min>
+        <div class="clearfix"></div>
+        <div class="col-12 pt-3 pb-3 text-center clearfix">
+            <pagination-controls class="pagination d-inline-block clearfix" (pageChange)="p = $event" autoHide="true" responsive="true"
+            directionLinks="true" previousLabel="Anterior" nextLabel="Siguiente" maxSize="10"></pagination-controls>   
+        </div>     
+    </div>
+</section>

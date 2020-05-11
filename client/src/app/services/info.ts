@@ -2,7 +2,7 @@
  * para prod
  */
 export let Info = {
-    city: "Valencia",
+    city: "Sarmiento 960, Bahía Blanca",
     phone: {
         cod: {
             int : "54",
