@@ -20,7 +20,8 @@ class ProductRepo {
         if(is_null($product))
             throw new ProductException(['El producto no existe']);
 
-        return Product::destroy($id);
+        Product::destroy($id);
+        return $product;
     }
 
     public static function update($id,$params){
@@ -30,8 +31,8 @@ class ProductRepo {
             throw new ProductException(['El producto no existe']);
 
         //Function update need an array
-        $product->update($formatArrayData);
-        return $producto;
+        $product->update($params);
+        return $product;
     }
 
     public static function insert($params){

@@ -20,6 +20,8 @@ Route::group(['middleware' => ['cors']], function () {
         
         // products
         Route::post('products', 'ProductController@insert');  
+        Route::post('products/{id}', 'ProductController@update');  
+        Route::delete('products/{id}', 'ProductController@delete');  
 
         // categories
         Route::post('categories', 'CategoryController@insert');  
