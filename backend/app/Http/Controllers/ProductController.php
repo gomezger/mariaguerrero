@@ -17,14 +17,23 @@ class ProductController extends Controller
     public function insert(Request $request){ 
         // get data 
         $requestParams = json_decode($request->input('json'),true);
-
-        // validate data
-        FileValidator::validate($request->file('file'),'mimes:jpeg,gif,png|required');
+        // validate data product
         FormProductValidator::validate($requestParams);
+
+        //validate main photos and seconday photos
+        FileValidator::validate($request->file('main_photo'),'mimes:jpeg,gif,png|required');
+        foreach($request->file('photos') as $file)
+            FileValidator::validate($file,'mimes:jpeg,gif,png|required');
         
-        // upload image
+        // upload main image
         $requestParams['images']  = array();
-        array_push($requestParams['images'],FileUploader::upload($request->file('file'),'public'));
+        array_push($requestParams['images'],FileUploader::upload($request->file('main_photo'),'public'));
+
+        //upload seconday photos
+        foreach($request->file('photos') as $file)
+            array_push($requestParams['images'],FileUploader::upload($file,'public'));
+        
+        // array to json
         $requestParams['images'] = json_encode($requestParams['images']);
 
         $product = ProductRepo::insert($requestParams);
