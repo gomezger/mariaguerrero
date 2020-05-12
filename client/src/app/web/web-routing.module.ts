@@ -5,7 +5,6 @@ import { IndexComponent } from './index/index.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductsComponent } from './products/products.component';
 
-
 const routes: Routes = [
   {
     path: '',

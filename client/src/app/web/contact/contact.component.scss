@@ -1,0 +1,101 @@
+$colorBlueLight: #ba4545;
+
+
+.title{
+    float: left;
+    background-attachment: fixed;
+    background-image: url('/assets/folder/bg-completo-2.jpeg');
+    background-size: 100% auto;
+    background-position: center;
+    margin-bottom: 20px;
+    clear: both;
+}
+.title .gradient{
+    float: left;
+    background-color: rgba(0,0,0,0.6);
+}
+
+h2{
+    color: #EEEFEF;
+    font-size: 40px;
+    font-family: 'Montserrat', cursive;
+    text-transform: uppercase;
+    padding: 30px 0;
+}
+
+section.products{
+
+}
+
+
+.pagination ::ng-deep .ngx-pagination .current {
+    background: #882627;
+}
+
+.datos{ 
+}
+
+.datos .titulo, .sumate .titulo{
+  font-weight: 600;
+  font-size: 23px;
+}
+
+
+.datos .dato{
+  margin-bottom: 10px !important;
+  float: left;
+  clear: both;
+  font-size: 19px;
+}
+
+form{ 
+    border-right: 2px solid #EEE;
+    padding-right: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.form-group{
+    margin-top: 20px;
+}
+
+.form-group label{
+    color: #03162e;
+}
+
+.form-group input, .form-group select, .custom-file-label, .form-group textarea{
+    border: solid 1px #FFF;
+    background-color: rgba(232, 232, 243, 0.384);
+    border-bottom: 1.5px solid #b41004;
+    border-radius: 0;
+    height: 43px;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus{
+    border-bottom: 1.5px solid #b41004;
+    transition: 0.5s;
+    //height: 41px;
+}
+
+.form-group textarea{
+  height: 120px;
+}
+
+form .boton{
+    border-radius: 1px;
+    text-transform: uppercase;
+    padding: 10px 5px;
+    margin-top: 40px;
+    background-color:#882627;
+    border-color: #9c3132;
+}
+
+form .boton:hover{
+    border-radius: 1px;
+    text-transform: uppercase;
+    padding: 10px 5px;
+    margin-top: 40px;
+    background-color:#d45456;
+    border-color: #bb4446;
+}
+
+
