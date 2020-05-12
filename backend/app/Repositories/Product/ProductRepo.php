@@ -30,8 +30,8 @@ class ProductRepo {
             throw new ProductException(['El producto no existe']);
 
         //Function update need an array
-        $product->update($formatArrayData);
-        return $producto;
+        $product->update($params);
+        return $product;
     }
 
     public static function insert($params){

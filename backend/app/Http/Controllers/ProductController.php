@@ -55,16 +55,30 @@ class ProductController extends Controller
         //get data
         $requestParams = json_decode($request->input('json'),true);
 
-        //Validate data
-        FileValidator::validate($request->file('file'),'mimes:jpeg,gif,png|required');
+        // validate data product
         FormProductValidator::validate($requestParams);
 
-        //upload image
-        $requestParams['images']  = array();
-        array_push($requestParams['images'],FileUploader::upload($request->file('file'),'public'));
-        $requestParams['images'] = json_encode($requestParams['images']);
+        //original data
+        $images = json_decode(ProductRepo::findById($id)->images,true);
 
-        ProductRepo::update($id,$requestParams);
+        //upload main img 
+        if ($request->file('main_photo')!=null){
+            FileValidator::validate($request->file('main_photo'),'mimes:jpeg,gif,png|required');
+            $images[0] = FileUploader::upload($request->file('main_photo'),'public');
+        }
+
+        //upload other photos
+        if ($request->file('photos')!=null){
+            foreach($request->file('photos') as $file)
+                FileValidator::validate($file,'mimes:jpeg,gif,png|required');
+            $images = array($images[0]);
+            foreach($request->file('photos') as $file)
+                array_push($images,FileUploader::upload($file,'public'));
+        }   
+
+        $requestParams['images'] = json_encode($images);
+        $product = ProductRepo::update($id,$requestParams);
+        return Response::success('Producto editado','producto',$product);
     }
 
     public function delete($id){
