@@ -20,7 +20,8 @@ class ProductRepo {
         if(is_null($product))
             throw new ProductException(['El producto no existe']);
 
-        return Product::destroy($id);
+        Product::destroy($id);
+        return $product;
     }
 
     public static function update($id,$params){

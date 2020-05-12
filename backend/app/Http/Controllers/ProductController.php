@@ -82,7 +82,8 @@ class ProductController extends Controller
     }
 
     public function delete($id){
-        ProductRepo::delete($id);
+        $product =  ProductRepo::delete($id);
+        return Response::success('Producto eliminado','producto',$product);
     }    
 
     //La idea es usar estos metodos en los de arriba para ahorrar codigo    
