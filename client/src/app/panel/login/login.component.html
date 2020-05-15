@@ -1,0 +1,29 @@
+<div class="container">    
+    <div id="cabeza">
+        Panel de Control
+    </div>
+ 
+    <div id="login">
+        <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+            <div class="form-group">
+                <label for="usuario">Correo</label>
+                <input  required type="text" class="form-control" id="usuario" 
+                        name="email" placeholder="Correo Electrónico"
+                        [(ngModel)]="email"
+                >
+                <label for="pass">Contraseña</label>
+                <input  required type="text" class="form-control" 
+                        type="password" id="pass" name="password"
+                        placeholder="Contraseña"
+                        [(ngModel)]="password"
+
+                >                       
+            </div>
+            <button type="submit" class="btn btn-info">Acceder</button>
+        </form>
+    </div>
+
+    <div id="alert" class="alert d-none m-1 clearfix" role="alert">
+        Validando datos
+    </div>
+</div>
