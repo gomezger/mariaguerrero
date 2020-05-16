@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MailSenderService} from '../../services/mail-sender.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _mailSenderService:MailSenderService) { }
 
   ngOnInit(): void {
+    this.prueba();
   }
 
+  prueba(){
+    this._mailSenderService.sendMail('Juan Perez','juanperez@juan.com','2914411801','Esto es un mensaje de prueba')
+    .subscribe(response=>{console.log(response)},error=>{console.log(error)});
+  }
 }
