@@ -15,14 +15,14 @@ export class MailSenderService {
   }
 
   public sendMail(name,from,phone,msj):Observable<any>{
-    const headers = new HttpHeaders().set('Content-Type','application/json');
+    const headers = new HttpHeaders();
     let body={
-      'name':name,
-      'from':from,
-      'phone':phone,
-      'msj':msj,
-      'to':'mati.luciano.garcia@gmail.com'
+      name:name,
+      from:from,
+      phone:phone,
+      msj:msj,
+      to:'mati.luciano.garcia@gmail.com'
     }
-    return this._http.post(this.url+'contact',body,{'headers':headers}) 
+    return this._http.post(this.url+'contact',JSON.stringify(body),{headers:headers}) 
   }
 }
