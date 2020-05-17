@@ -14,6 +14,8 @@ import { AboutUsComponent } from './index/about-us/about-us.component';
 import { TitleComponent } from './components/title/title.component';
 import { ProductsComponent as IndexProductComponet } from './index/products/products.component';
 import { ProductsComponent } from './products/products.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { ProductsComponent } from './products/products.component';
   imports: [
     NgxPaginationModule,
     CommonModule,
-    WebRoutingModule
+    WebRoutingModule,
+    FormsModule
   ]
 })
 export class WebModule { }

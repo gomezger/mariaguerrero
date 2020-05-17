@@ -16,13 +16,14 @@ export class MailSenderService {
 
   public sendMail(name,from,phone,msj):Observable<any>{
     const headers = new HttpHeaders();
+    let subject = 'Mensaje a MARIA GUERRERO DECORACIÓN de: ' + name; 
     let body={
       name:name,
       from:from,
       phone:phone,
       msj:msj,
-      to:'mati.luciano.garcia@gmail.com'
+      subject:subject
     }
-    return this._http.post(this.url+'contact',JSON.stringify(body),{headers:headers}) 
+    return this._http.post(this.url+'/contact',JSON.stringify(body),{headers:headers}) 
   }
 }

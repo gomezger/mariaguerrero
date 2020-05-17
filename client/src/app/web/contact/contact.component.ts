@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MailSenderService} from '../../services/mail-sender.service';
+import {Contacto}from '../../models/contacto';
 
 @Component({
   selector: 'app-contact',
@@ -8,16 +9,29 @@ import {MailSenderService} from '../../services/mail-sender.service';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private _mailSenderService:MailSenderService) { }
+  public myContacto:Contacto;
+  public exito:boolean;
 
-  ngOnInit(): void {
-    this.prueba();
+  constructor(private _mailSenderService:MailSenderService) { 
+    this.myContacto= new Contacto('','','','');
+    this.exito=false;
   }
 
-  prueba(){
-    this._mailSenderService.sendMail('Juan Perez','juanperez@juan.com','2914411801','Esto es un mensaje de prueba')
+  ngOnInit(): void {
+    
+  }
+
+  onSubmitContacto(){
+    this.sendMailFront();
+  }
+
+  sendMailFront(){
+    this._mailSenderService.sendMail(this.myContacto.nombre,this.myContacto.from,this.myContacto.phone,this.myContacto.msj)
     .subscribe(
-      response=>{console.log(response)},
+      response=>{
+        console.log(response);
+        this.exito=true;
+      },
       error=>{console.log(error)});
   }
 }
