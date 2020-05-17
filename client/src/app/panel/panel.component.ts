@@ -26,29 +26,10 @@ export class PanelComponent implements OnInit,DoCheck {
 
   
   private checkSession(){
-    //ver si esta logueado
-    const log = localStorage.getItem('panel-login');
-    const tok = localStorage.getItem('panel-token');
     const ide = localStorage.getItem('panel-identity');
-
-    //si esta logueado, chequeamos que no haya expirado
-    if(log!=null && tok!=null && ide!=null && log=='true'){
-      
-      //expira en
+    if(ide!=null){
       const dato:any = JSON.parse(ide);
-      const exp = dato.exp;
-      const actual = Math.floor(new Date().getTime() / 1000); //es lo mismo que time() en php
-
-
-      if(actual>exp){
-        this._route.navigate(['/panel/login']);
-      }else{
-        this.name = dato.name;
-      }
-
-    //redirigimos al login
-    }else{      
-        this._route.navigate(['/panel/login']);
+      this.name = dato.name;
     }
   }
 

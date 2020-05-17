@@ -1,5 +1,5 @@
 .sidebar-wrapper {
-	min-height: 100vh;
+	min-height: calc(100vh);
 	margin-left: -15rem;
 	-webkit-transition: margin .25s ease-out;
 	-moz-transition: margin .25s ease-out;
@@ -8,8 +8,22 @@
 	background-color: #40514e;
 	color: white;
 	text-align: center;
-	padding-bottom: 4000px;
-	margin-bottom: -4000px;
+}
+
+html {
+	height: 100% !important;
+}
+
+body {
+	min-height: 100% !important;
+}
+
+#page-content-wrapper {
+	min-width: 100%;
+}
+
+#wrapper.toggled .sidebar-wrapper {
+	margin-left: 0;
 }
 
 .navbar {
@@ -55,13 +69,6 @@
 	box-shadow: none !important;
 }
 
-#page-content-wrapper {
-	min-width: 100vw;
-}
-
-#wrapper.toggled .sidebar-wrapper {
-	margin-left: 0;
-}
 
 @media (min-width: 992px) {
 	.sidebar-wrapper {

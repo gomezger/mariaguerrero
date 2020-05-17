@@ -7,10 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-	providers : [
-	  	UserService
-	]
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   public email: string;
@@ -25,42 +22,39 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: any){
-    this.setMessage('alert','alert-info',['Validando datos...']);
+    this.setMessage('alert','alert-info','Validando datos...');
 
     this._userService.login(this.email, this.password).subscribe(
       (response) => {
         if ( response.status === 'error' ) {
-
           this.setMessage('alert','alert-danger',response.errors);
-
         } else if( response.status === 'success' ) {
-
-
           localStorage.setItem('panel-token', response.token);
           localStorage.setItem('panel-login', 'true');
-          localStorage.setItem('panel-identity', response.identity); 
-          this._route.navigate(['/panel']);        
-
+          localStorage.setItem('panel-identity', JSON.stringify(response.identity)); 
+          this._route.navigate(['/panel/productos']);       
           form.reset();
-          
-
         }
       },
       (error) => {		
-        this.setMessage('alert','alert-danger',['Error. Intente nuevamente']);
+        this.setMessage('alert','alert-danger','Error. Intente nuevamente');
       }
     );
   }
 
-  private setMessage(id: string, alert: string, errors: Array<string>){
+  private setMessage(id: string, alert: string, err: any){
     const div = document.getElementById(id);
     div.classList.remove('d-none');
     div.classList.add(alert, 'animated', 'fadeIn');
-    div.innerText = '';
-    for(let error of errors){
-      div.innerText = div.innerText+"-"+error+"\r";
+    
+    if(Array.isArray(err)){
+      div.innerText = '';
+      for(let error of err){
+        div.innerText = div.innerText+"-"+error+"\r";
+      }
+    }else{
+      div.innerText = err;
     }
-
   }
 
 

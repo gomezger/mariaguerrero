@@ -22,16 +22,18 @@ class ProductController extends Controller
 
         //validate main photos and seconday photos
         FileValidator::validate($request->file('main_photo'),'mimes:jpeg,gif,png|required');
-        foreach($request->file('photos') as $file)
-            FileValidator::validate($file,'mimes:jpeg,gif,png|required');
+        if($request->file('photos')!=null)
+            foreach($request->file('photos') as $file)
+                FileValidator::validate($file,'mimes:jpeg,gif,png|required');
         
         // upload main image
         $requestParams['images']  = array();
         array_push($requestParams['images'],FileUploader::upload($request->file('main_photo'),'public'));
 
         //upload seconday photos
-        foreach($request->file('photos') as $file)
-            array_push($requestParams['images'],FileUploader::upload($file,'public'));
+        if($request->file('photos')!=null)
+            foreach($request->file('photos') as $file)
+                array_push($requestParams['images'],FileUploader::upload($file,'public'));
         
         // array to json
         $requestParams['images'] = json_encode($requestParams['images']);

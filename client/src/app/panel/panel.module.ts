@@ -4,15 +4,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PanelRoutingModule } from './panel-routing.module';
 import { PanelComponent } from './panel.component';
 import { LoginComponent } from './login/login.component';
+import { ProductsComponent } from './products/products.component';
+import { BreadcrumbsComponent } from './componets/breadcrumbs/breadcrumbs.component';
+import { FormComponent } from './products/form/form.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 @NgModule({
   declarations: [
     PanelComponent, 
-    LoginComponent
+    LoginComponent, ProductsComponent, BreadcrumbsComponent, FormComponent
     
   ],
   imports: [
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot(),
     CommonModule,
     PanelRoutingModule,
     FormsModule
