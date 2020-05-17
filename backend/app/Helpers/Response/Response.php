@@ -7,12 +7,30 @@ class Response{
      * @message: string
      */
     public static function success($message, $name_object, $object){
-        return array(
-            "status" => "success",
-            "code" => 200,
-            "message" => $message,
-            $name_object => $object
-        );
+
+
+        if(is_array($name_object)){
+            $response = array(
+                "status" => "success",
+                "code" => 200,
+            );
+
+            for($i=0; $i<count($name_object); $i++)
+                $response[$name_object[$i]] = $object[$i];
+
+            return $response;
+
+        }else{
+            return array(
+                "status" => "success",
+                "code" => 200,
+                "message" => $message,
+                $name_object => $object
+            );
+        }
+
+
+        
     }
 
     /**

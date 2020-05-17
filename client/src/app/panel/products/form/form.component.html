@@ -1,0 +1,86 @@
+<app-breadcrumbs
+    [urls]="[['/panel/productos','Productos']]"
+    [title]="'Agregar'"
+    [buttons]="[['/panel/productos','fas fa-couch','Listado']]"
+></app-breadcrumbs>
+
+
+<form (ngSubmit)="onSubmit(productForm)" #productForm="ngForm">    
+    <div class="form-row col-12 p-0">
+
+        <div class="form-group col-12 col-md-8 mb-3">
+            <label for="nombreInput">Título del producto</label>
+            <input 
+                type="text" class="form-control" id="nombreInput" 
+                placeholder="Ingrese el nombre del producto"
+                name="title" required
+                #title="ngModel" [(ngModel)]="product.title"
+            >
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alerta text-danger pt-1 pl-1">
+                <div *ngIf="title.errors.required">
+                El campo título es obligatorio
+                </div>                
+            </div>
+        </div>
+
+        <div class="form-group col-12 col-md-4 mb-3">
+            <label for="nombreInput">Categoría</label>
+            <select 
+                type="text" class="form-control" id="nombreInput" 
+                name="category_id" required
+                #category_id="ngModel" [(ngModel)]="product.category_id"
+            >
+                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+            </select>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alerta text-danger pt-1 pl-1">
+                <div *ngIf="title.errors.required">
+                El campo título es obligatorio
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="form-row col-12 p-0">  
+
+        <div class="form-group col-12 col-md-6">
+            <label for="imagenInput">Imagen principal (solo una)</label>
+            <div class="custom-file">
+                <input (change)="mainPhotoChanged($event)" type="file" class="custom-file-input" required>
+                <label id="main-photo" class="custom-file-label imagen-lavel" for="validatedCustomFile">Elegir imagen</label>
+                <div class="invalid-feedback">La imagen no es válida</div>
+            </div>
+        </div>  
+
+        <div class="form-group col-12 col-md-6">
+            <label for="cvInput">Imágenes secundarias (varias)</label>
+            <div class="custom-file">
+                <input (change)="photosChanged($event)"  type="file" class="custom-file-input" multiple required>
+                <label id="photos" class="custom-file-label cv-lavel" for="validatedCustomFile">Elegir imágenes</label>
+                <div class="invalid-feedback">Las imagenes no son válidas</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row col-12 p-0">  
+        <div class="form-group col-12 mb-3 p-0">
+            <label for="imagenInput">Descripción</label>
+            <textarea 
+                name="description" 
+                #description="ngModel" 
+                [(ngModel)]="product.description" 
+                placeholder="Ingrese la descriptión del producto"
+                [froalaEditor]="options">                
+            </textarea>
+        </div>
+    </div>
+    
+    <div id="alert" class="alert d-none clearfix mb-3" role="alert">
+        Validando datos
+    </div>
+    
+    <div class="form-row col-12 p-0">  
+        <button type="submit" class="btn btn-primary btn-sm">Agregar/editar producto</button>
+    </div>
+
+</form>

@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['cors']], function () {
+    
+    Route::post('products', 'ProductController@insert');  
 
     //----- need token auth -----//
     Route::group(['middleware' => ['auth.token']], function () {  
         
         // products
-        Route::post('products', 'ProductController@insert');  
         Route::post('products/{id}', 'ProductController@update');  
         Route::delete('products/{id}', 'ProductController@delete');  
 

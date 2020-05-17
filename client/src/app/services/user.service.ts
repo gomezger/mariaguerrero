@@ -36,5 +36,9 @@ export class UserService {
     return this._http.post(this.url + '/users/login', JSON.stringify(user), {'headers': headers});
   }
 
+  public getToken(){
+    return localStorage.getItem('panel-token');
+  }
+
 
 }

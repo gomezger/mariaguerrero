@@ -57,8 +57,9 @@ class UserController extends Controller
         // get Token
         $password = hash('sha256', $requestParams['password']);
         $token = $this->auth->getToken($requestParams['email'],$password);
+        $identity = $this->auth->getDataToken($requestParams['email'],$password);
 
-        return Response::success('Token generado','token',$token);        
+        return Response::success('Token generado',['token','identity'],[$token,$identity]);        
     }
 
     
