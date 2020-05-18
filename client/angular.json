@@ -33,7 +33,7 @@
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
               "./node_modules/froala-editor/css/froala_style.min.css",
-              "src/assets/fontawesome-5.13.0/css/all.css"
+              "src/assets/fontawesome-pro-5.13.0-web/css/all.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",

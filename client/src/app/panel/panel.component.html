@@ -5,7 +5,7 @@
     <div class="border-right sidebar-wrapper text-left" id="sidebar-wrapper">
       <div class="sidebar-heading">Panel de control</div>
       <div class="list-group list-group-flush text-left">
-        <a [routerLink]="['/panel/productos']" class="item"><i class="fas fa-couch mr-2"></i> Productos</a>
+        <a [routerLink]="['/panel/productos']" class="item"><i class="fad fa-loveseat mr-2"></i> Productos</a>
         <a [routerLink]="['/panel/categorias']" class="item"><i class="fab fa-cuttlefish mr-3"></i> Categorías</a>
         <a [routerLink]="['/panel/usuarios']" class="item"><i class="fas fa-user mr-2"></i> Usuarios</a>
         <a class="item exit" (click)="logout()"><i class="fas fa-sign-out-alt mr-2" ></i>Cerrar Sesión</a>
@@ -17,7 +17,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg border-bottom navbar">
-        <button class="btn btn-toggle" (click)="toggle()" id="menu-toggle"><i class="fas fa-bars"></i></button>
+        <button class="btn btn-toggle" (click)="toggle()" id="menu-toggle"><i class="far fa-bars"></i></button>
         <div class="ml-auto display-5 mr-2" *ngIf="name">{{name}}<i class="fas fa-user ml-2"></i></div>
         <div class="ml-auto display-5 mr-2" *ngIf="!name">No hay nombre<i class="fas fa-user ml-2"></i></div>
       </nav>
