@@ -15,7 +15,8 @@ const routes: Routes = [
     canActivate: [GuardGuard],
     children:[
       {path: 'productos', component: ProductsComponent },
-      {path: 'productos/crear', component:  FormProductsComponent }
+      {path: 'productos/crear', component:  FormProductsComponent },
+      {path: 'productos/:id', component:  FormProductsComponent }
     ]
   }];
 

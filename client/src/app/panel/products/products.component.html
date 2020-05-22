@@ -3,3 +3,65 @@
     [title]="'Listado'"
     [buttons]="[['/panel/productos/crear','fas fa-plus-circle','Agregar']]"
 ></app-breadcrumbs>
+
+
+<div id="alert" class="alert d-none clearfix mb-3" role="alert">
+    Validando datos
+</div>
+
+
+<section class="table-list table-responsive">
+    
+    <h4 *ngIf="products && products.length==0" class=" text-center col-12">No hay productos</h4> 
+
+    <table *ngIf="products && products.length>0" class="table table-striped fixed expandible">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Título</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Imágenes</th>
+            <th scope="col">Últ. Actualización</th>
+            <th scope="col">Operaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: pagine }">
+                <th scope="row">
+                    {{ product.id }}
+                </th>
+                <td class="text-info">
+                    {{ product.title }}
+                </td>
+                <td>
+                    <a class="text-dark" [routerLink]="['../categorias/editar/',product.category.id]">{{ product.category.name}}</a>
+                </td>
+                <td>
+                    <ng-container *ngFor="let imagen of product.images">     
+                        <div class="lupa float-left">
+                            <i class="far fa-image-polaroid mr-1 text-info"></i>
+                        <div class="imagen" [style.backgroundImage]="'url('+storage+''+imagen+')'"></div>
+                        </div>
+                    </ng-container>
+                </td>
+                <td>
+                    {{ product.updated_at | date:'d-MM-yy HH:mm'}}hs
+                </td>
+                <td>
+                    <a class="icon-operation text-info" [routerLink]="[product.id]">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    <a class="icon-operation text-info"  type="button"data-toggle="modal" [attr.data-target]="'#modalDelete-'+product.id">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                </td>
+
+                <app-modal-delete [product]="product" (deleteProductView)="deleteProductView($event)" ></app-modal-delete>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-12 pt-3 pb-3 text-center clearfix">
+        <pagination-controls class="pagination d-inline-block clearfix" (pageChange)="pagine = $event" autoHide="true" responsive="true"
+        directionLinks="true" previousLabel="Anterior" nextLabel="Siguiente" maxSize="10"></pagination-controls>   
+    </div>     
+</section>
