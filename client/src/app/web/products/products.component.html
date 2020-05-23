@@ -29,7 +29,8 @@
     <div class="container">       
         <app-min 
             [size]="4" 
-            *ngFor="let p of [0,1,2,3,4,5,6,7,8,9,10,11]  | paginate: { itemsPerPage: 9, currentPage: p }"
+            *ngFor="let p of products  | paginate: { itemsPerPage: 9, currentPage: p }"
+            [product]="p"
         ></app-min>
         <div class="clearfix"></div>
         <div class="col-12 pt-3 pb-3 text-center clearfix">
