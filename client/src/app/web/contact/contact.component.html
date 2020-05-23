@@ -37,7 +37,7 @@
             </div>
             <button type="submit" class="col-12 btn btn-primary boton" [disabled]="!contactForm.valid">Enviar información</button>
 
-            <div class="alert alert-primary mt-3" role="alert" >
+            <div *ngIf="exito" class="alert alert-primary mt-3" role="alert" >
                 Su mensaje ha sido enviado, nos comunicaremos con usted a la brevedad.
             </div>
         </form>

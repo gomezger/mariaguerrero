@@ -48,6 +48,13 @@
     margin-right: 7px;
 }
 
+.informacion button:hover{
+    transition: 1000ms;
+    border-radius: 1px;
+    background-color:#750e10;
+    border-color: #831a1c;
+}
+
 .informacion button i {
     margin:2px
 }
