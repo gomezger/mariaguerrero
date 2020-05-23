@@ -1,0 +1,24 @@
+$colorBlueLight: #ba4545;
+
+
+.title{
+    float: left;
+    background-attachment: fixed;
+    background-image: url('/assets/folder/bg-completo-2.jpeg');
+    background-size: 100% auto;
+    background-position: center;
+    margin-bottom: 20px;
+    clear: both;
+}
+.title .gradient{
+    float: left;
+    background-color: rgba(0,0,0,0.6);
+}
+
+h2{
+    color: #EEEFEF;
+    font-size: 40px;
+    font-family: 'Montserrat', cursive;
+    text-transform: uppercase;
+    padding: 30px 0;
+}

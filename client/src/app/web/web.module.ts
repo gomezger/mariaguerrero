@@ -16,6 +16,7 @@ import { ProductsComponent as IndexProductComponet } from './index/products/prod
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
 import { DetailProductsComponent } from './detail-products/detail-products.component';
+import { PresupuestoComponent } from './presupuesto/presupuesto.component';
 
 
 
@@ -32,7 +33,8 @@ import { DetailProductsComponent } from './detail-products/detail-products.compo
     ProductsComponent, 
     IndexProductComponet,
     MinComponent,
-    DetailProductsComponent, 
+    DetailProductsComponent,
+    PresupuestoComponent, 
   ],
   imports: [
     NgxPaginationModule,

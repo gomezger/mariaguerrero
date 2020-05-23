@@ -4,7 +4,8 @@ import { WebComponent } from './web.component';
 import { IndexComponent } from './index/index.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductsComponent } from './products/products.component';
-import {DetailProductsComponent} from './detail-products/detail-products.component'
+import {DetailProductsComponent} from './detail-products/detail-products.component';
+import {PresupuestoComponent} from './presupuesto/presupuesto.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       { path: '', component: IndexComponent },
       { path: 'productos', component: ProductsComponent },
       { path: 'contacto', component: ContactComponent },
-      {path: 'producto/:id', component:DetailProductsComponent}
+      { path: 'producto/:id', component:DetailProductsComponent},
+      {path: 'presupuesto',component:PresupuestoComponent}
     ]
   }
 ];
