@@ -12,6 +12,7 @@ const routes: Routes = [
     component: WebComponent,
     children:[
       { path: '', component: IndexComponent },
+      { path: 'productos/:id/:category', component: ProductsComponent },
       { path: 'productos', component: ProductsComponent },
       { path: 'contacto', component: ContactComponent },
       {path: 'producto/:id', component:DetailProductsComponent}

@@ -44,6 +44,7 @@ Route::group(['middleware' => ['cors']], function () {
 
     // users
     Route::post('users/login', 'UserController@login');  
+    Route::get('users', 'UserController@getAll');  
 
     //categories
     Route::get('categories', 'CategoryController@getAll');  

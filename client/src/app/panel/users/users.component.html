@@ -1,0 +1,60 @@
+<app-breadcrumbs
+    [urls]="[['/panel/usuarios','Usuarios']]"
+    [title]="'Listado'"
+    [buttons_modal]="[['#modalUser-0','fas fa-plus-circle','Agregar']]"
+></app-breadcrumbs>
+
+<!-- modal para crear categorias-->
+<app-form-user [user]="null" (addUserView)="addUserView($event)"></app-form-user>
+<div id="alert" class="alert d-none clearfix mb-3" role="alert">
+    Validando datos
+</div>
+
+
+<section class="table-list table-responsive">
+    
+    <h4 *ngIf="users && users.length==0" class=" text-center col-12">No hay usuarios</h4> 
+
+    <table *ngIf="users && users.length>0" class="table table-striped fixed expandible">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Últ. Actualización</th>
+            <th scope="col">Operaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: pagine }">
+                <th scope="row">
+                    {{ user.id }}
+                </th>
+                <td class="text-info">
+                    {{ user.name }}
+                </td>
+                <td>
+                   {{ user.email }}
+                </td>
+                <td>
+                    {{ user.updated_at | date:'d-MM-yy HH:mm'}}hs
+                </td>
+                <td>
+                    <a class="icon-operation text-info mr-2" type="button" data-toggle="modal" [attr.data-target]="'#modalUser-'+user.id">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    <a class="icon-operation text-info"  type="button" data-toggle="modal" [attr.data-target]="'#modalDelete-'+user.id">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                </td>
+
+                <app-modal-delete-user [user]="user" (deleteUserView)="deleteUserView($event)"></app-modal-delete-user>
+                <app-form-user [user]="user" (editUserView)="editUserView($event)"></app-form-user>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-12 pt-3 pb-3 text-center clearfix">
+        <pagination-controls class="pagination d-inline-block clearfix" (pageChange)="pagine = $event" autoHide="true" responsive="true"
+        directionLinks="true" previousLabel="Anterior" nextLabel="Siguiente" maxSize="10"></pagination-controls>   
+    </div>     
+</section>

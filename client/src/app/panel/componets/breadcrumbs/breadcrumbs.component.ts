@@ -9,6 +9,7 @@ export class BreadcrumbsComponent implements OnInit {
   @Input() urls: Array<Array<string>> = [];
   @Input() title: string = "";
   @Input() buttons: Array<Array<string>> = [];
+  @Input() buttons_modal: Array<Array<string>> = [];
 
   constructor() { }
 

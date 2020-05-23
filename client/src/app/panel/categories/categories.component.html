@@ -1,0 +1,61 @@
+<app-breadcrumbs
+    [urls]="[['/panel/categorias','Categorias']]"
+    [title]="'Listado'"
+    [buttons_modal]="[['#modalCategory-0','fas fa-plus-circle','Agregar']]"
+></app-breadcrumbs>
+
+<!-- modal para crear categorias-->
+<app-form-category [category]="null" (addCategoryView)="addCategoryView($event)"></app-form-category>
+
+<div id="alert" class="alert d-none clearfix mb-3" role="alert">
+    Validando datos
+</div>
+
+
+<section class="table-list table-responsive">
+    
+    <h4 *ngIf="categories && categories.length==0" class=" text-center col-12">No hay categorías</h4> 
+
+    <table *ngIf="categories && categories.length>0" class="table table-striped fixed expandible">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad de productos</th>
+            <th scope="col">Últ. Actualización</th>
+            <th scope="col">Operaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories | paginate: { itemsPerPage: 10, currentPage: pagine }">
+                <th scope="row">
+                    {{ category.id }}
+                </th>
+                <td class="text-info">
+                    {{ category.name }}
+                </td>
+                <td>
+                   {{ category.products.length }}
+                </td>
+                <td>
+                    {{ category.updated_at | date:'d-MM-yy HH:mm'}}hs
+                </td>
+                <td>
+                    <a class="icon-operation text-info mr-2" type="button" data-toggle="modal" [attr.data-target]="'#modalCategory-'+category.id">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    <a class="icon-operation text-info"  type="button" data-toggle="modal" [attr.data-target]="'#modalDelete-'+category.id">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                </td>
+
+                <app-modal-delete-category [category]="category" (deleteCategoryView)="deleteCategoryView($event)"></app-modal-delete-category>
+                <app-form-category [category]="category" (editCategoryView)="editCategoryView($event)"></app-form-category>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-12 pt-3 pb-3 text-center clearfix">
+        <pagination-controls class="pagination d-inline-block clearfix" (pageChange)="pagine = $event" autoHide="true" responsive="true"
+        directionLinks="true" previousLabel="Anterior" nextLabel="Siguiente" maxSize="10"></pagination-controls>   
+    </div>     
+</section>

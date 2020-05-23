@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { GuardGuard } from '../services/guard.guard';
 import { ProductsComponent } from './products/products.component';
 import { FormComponent as FormProductsComponent } from './products/form/form.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { UsersComponent } from './users/users.component';
 
 
 const routes: Routes = [
@@ -16,7 +18,9 @@ const routes: Routes = [
     children:[
       {path: 'productos', component: ProductsComponent },
       {path: 'productos/crear', component:  FormProductsComponent },
-      {path: 'productos/:id', component:  FormProductsComponent }
+      {path: 'productos/:id', component:  FormProductsComponent },
+      {path: 'categorias', component: CategoriesComponent },
+      {path: 'usuarios', component: UsersComponent },
     ]
   }];
 

@@ -68,4 +68,9 @@ class UserController extends Controller
         return Response::success('Usuario eliminado','usuario',$user);
     } 
 
+    public function getAll(){
+        $users = UserRepo::findAll();
+        return Response::success('Usuarios','usuarios',$users);
+    }
+
 }
