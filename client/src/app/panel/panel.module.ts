@@ -16,6 +16,7 @@ import { ModelDeleteComponent as ModalDeleteCategoriesComponent } from './catego
 import { UsersComponent } from './users/users.component';
 import { FormComponent as FormUsersComponent } from './users/form/form.component';
 import { ModelDeleteComponent as ModalDeleteUsetComponente } from './users/model-delete/model-delete.component';
+import { LoadingComponent } from './componets/loading/loading.component';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { ModelDeleteComponent as ModalDeleteUsetComponente } from './users/model
      ModalDeleteCategoriesComponent, 
      UsersComponent, 
      FormUsersComponent, 
-     ModalDeleteUsetComponente
+     ModalDeleteUsetComponente, LoadingComponent
     
   ],
   imports: [

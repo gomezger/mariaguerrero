@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import FroalaEditor from 'froala-editor';
 import { Product } from 'src/app/models/product';
 import { Category } from 'src/app/models/category';
@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  public title: string = "Agregar";
 
   public product: Product;
   public mainPhoto: File = null;
@@ -36,9 +37,11 @@ export class FormComponent implements OnInit {
    */
   private getProduct(): void {
     const id = +this._route.snapshot.paramMap.get('id');
-    if(id==0)
+    if(id==0){
       this.product = new Product(0,'',0,new Category(0,'',null,null),null,'',null,null);
-    else{
+      this.title = 'Agregar';
+    }else{
+      this.title = 'Editar';
       this._productService.getById(id).toPromise().then(
         (response) => {
           this.product = response.producto;

@@ -9,8 +9,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FormComponent implements OnInit {
   @Input() user: User;
+  @Input() title: string = 'Crear';
   @Output() addUserView = new EventEmitter<User>();
   @Output() editUserView = new EventEmitter<Array<User>>();
+
 
   constructor(
     private _usersService: UserService

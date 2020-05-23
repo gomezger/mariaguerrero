@@ -9,6 +9,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 })
 export class FormComponent implements OnInit {
   @Input() category: Category;
+  @Input() title: string = 'Crear';
   @Output() addCategoryView = new EventEmitter<Category>();
   @Output() editCategoryView = new EventEmitter<Array<Category>>();
 

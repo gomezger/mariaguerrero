@@ -12,6 +12,8 @@
 
 
 <section class="table-list table-responsive">
+
+    <loading *ngIf="!users"></loading>
     
     <h4 *ngIf="users && users.length==0" class=" text-center col-12">No hay usuarios</h4> 
 
@@ -21,8 +23,8 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Correo</th>
-            <th scope="col">Últ. Actualización</th>
-            <th scope="col">Operaciones</th>
+            <th scope="col">Fecha Mod.</th>
+            <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +51,7 @@
                 </td>
 
                 <app-modal-delete-user [user]="user" (deleteUserView)="deleteUserView($event)"></app-modal-delete-user>
-                <app-form-user [user]="user" (editUserView)="editUserView($event)"></app-form-user>
+                <app-form-user [user]="user" (editUserView)="editUserView($event)" [title]="'Editar'"></app-form-user>
             </tr>
         </tbody>
     </table>

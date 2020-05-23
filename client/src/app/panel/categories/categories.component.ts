@@ -9,7 +9,10 @@ import { CategoriesService } from 'src/app/services/categories.service';
 })
 export class CategoriesComponent implements OnInit {
   public categories: Array<Category>;
+  
+  //paginate
   public pagine: number = 0;
+  public cant = 10;
 
   constructor(
     private _categoryService: CategoriesService
@@ -37,7 +40,7 @@ export class CategoriesComponent implements OnInit {
   
   deleteCategoryView(c: Category){
     this.categories.splice(this.categories.indexOf(c),1);
-    if(this.pagine>0 && this.categories.length%4==0)
+    if(this.pagine>0 && this.categories.length%this.cant==0)
       this.pagine--;
   }
 

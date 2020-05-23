@@ -11,6 +11,8 @@
 
 
 <section class="table-list table-responsive">
+
+    <loading *ngIf="!products"></loading>
     
     <h4 *ngIf="products && products.length==0" class=" text-center col-12">No hay productos</h4> 
 

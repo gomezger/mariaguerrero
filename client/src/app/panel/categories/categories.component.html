@@ -13,6 +13,8 @@
 
 
 <section class="table-list table-responsive">
+
+    <loading *ngIf="!categories"></loading>
     
     <h4 *ngIf="categories && categories.length==0" class=" text-center col-12">No hay categorías</h4> 
 
@@ -22,12 +24,12 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Cantidad de productos</th>
-            <th scope="col">Últ. Actualización</th>
-            <th scope="col">Operaciones</th>
+            <th scope="col">Fecha Mod.</th>
+            <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let category of categories | paginate: { itemsPerPage: 10, currentPage: pagine }">
+            <tr *ngFor="let category of categories | paginate: { itemsPerPage: cant, currentPage: pagine }">
                 <th scope="row">
                     {{ category.id }}
                 </th>
@@ -50,7 +52,7 @@
                 </td>
 
                 <app-modal-delete-category [category]="category" (deleteCategoryView)="deleteCategoryView($event)"></app-modal-delete-category>
-                <app-form-category [category]="category" (editCategoryView)="editCategoryView($event)"></app-form-category>
+                <app-form-category [title]="'Editar'" [category]="category" (editCategoryView)="editCategoryView($event)"></app-form-category>
             </tr>
         </tbody>
     </table>
