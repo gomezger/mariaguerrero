@@ -11,7 +11,10 @@ class ProductRepo {
     }
     
     public static function findAll(){
-        return Product::all();
+        $products = Product::all()->load('category');
+        foreach($products as $p)
+            $p->images = json_decode($p->images);
+        return $products;
     }
 
     public static function delete($id){

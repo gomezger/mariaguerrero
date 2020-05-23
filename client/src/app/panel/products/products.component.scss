@@ -1,0 +1,33 @@
+.icon-operation{
+    margin-left: 10px;
+    float: left;
+}
+
+
+
+.lupa:hover {
+	cursor: pointer;
+}
+
+.lupa:hover .imagen {
+    display: block;
+    transition: 0.5s;
+}
+.imagen {
+	display: none;
+	position: absolute;
+	height: 130px;
+	width: 250px;
+
+	z-index: 10000;
+	border: 1.5px solid black;
+	background-color: white;
+
+	background-repeat: no-repeat;
+	background-size:  100% auto;
+	background-position: center center;
+	-webkit-transition: all 0.35s linear;
+	-moz-transition: all 0.35s linear;
+	-o-transition: all 0.35s linear;
+	transition: all 0.35s linear;
+}

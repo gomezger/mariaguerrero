@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['cors']], function () {
     
-    Route::post('products', 'ProductController@insert');  
 
     //----- need token auth -----//
     Route::group(['middleware' => ['auth.token']], function () {  
@@ -23,6 +22,7 @@ Route::group(['middleware' => ['cors']], function () {
         // products
         Route::post('products/{id}', 'ProductController@update');  
         Route::delete('products/{id}', 'ProductController@delete');  
+        Route::post('products', 'ProductController@insert');  
 
         // categories
         Route::post('categories', 'CategoryController@insert');  
@@ -37,6 +37,10 @@ Route::group(['middleware' => ['cors']], function () {
     });
 
     //----- no need token auth -----//
+
+    //products
+    Route::get('products', 'ProductController@getAll');  
+    Route::get('products/{id}', 'ProductController@getById');  
 
     // users
     Route::post('users/login', 'UserController@login');  
