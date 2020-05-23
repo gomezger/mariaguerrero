@@ -1,44 +1,53 @@
-.general{
-    background-color: rgba(235, 235, 235,0.3);
-    box-shadow: 1px 1px 1px rgba(204, 204, 204, 0.473);
-}
-.caja{
-    // padding-top: 10px;
-    // padding-left:30px;
-    // padding-right: 30px;
-    padding:20px;
+.principal{
+    background-color:rgba(235, 230, 230, 0.247);
+    height: 700;
+    margin: auto;
+    padding: 10px;
+    border: 2px solid rgba(235, 230, 230, 0.247); 
 }
 
-.carru{
-    max-width: 800px;
-    margin-top:10px;
+.carousel-inner  {
+    max-width: 600px;
+    height: 100%;
+}
+
+.carousel-inner img{
+    max-width: 600px;
+    height: 100%;
+    display:block;
     margin:auto;
 }
 
-.intro{
-    display: flexbox;
+.carousel{
+    max-width: 600px;
+    height: 100%;
+    margin-right: 15px;
+    margin: auto;
 }
 
-button{
+.informacion {
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.informacion h2{
+    margin-top:10px;
+    margin-bottom: 10px;
+    color:rgba(58, 58, 58, 0.842)
+}
+
+.informacion button{
     border: solid 1px #FFF;
     background-color: rgba(232, 232, 243, 0.384);
     border-bottom: 1.5px solid #b41004;
-    border-radius: 0;
     height: 43px;
     background-color: #ba4545; 
     color:rgba(240, 238, 238, 0.966);
     border-radius: 4px;
-    margin: 3px;
-    width: 100px;
-    align-items: flex-end;
+    width: 150px;
+    margin-right: 7px;
 }
 
-.intro h3{
-    color: rgba(66, 66, 66, 0.548);
-    display: inline-block;
-    text-align: left;
-}
-
-.intro h1{
-    margin-top: 5px;
+.informacion button i {
+    margin:2px
 }
