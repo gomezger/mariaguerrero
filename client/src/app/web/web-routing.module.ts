@@ -4,7 +4,7 @@ import { WebComponent } from './web.component';
 import { IndexComponent } from './index/index.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductsComponent } from './products/products.component';
-import {DetailProductsComponent} from './detail-products/detail-products.component';
+import {DetailProductsComponent} from './products/detail-products/detail-products.component';
 import {PresupuestoComponent} from './presupuesto/presupuesto.component';
 
 const routes: Routes = [

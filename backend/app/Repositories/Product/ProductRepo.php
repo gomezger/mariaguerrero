@@ -7,7 +7,9 @@ use App\Exceptions\ProductException;
 class ProductRepo {
     
     public static function findById($id){
-        return Product::find($id);
+        $product =  Product::find($id)->load('category');
+        $product->images = json_decode($product->images);
+        return $product;
     }
     
     public static function findAll(){

@@ -1,0 +1,114 @@
+.principal{
+    background-color:rgba(235, 230, 230, 0.247);
+    height: 700;
+    margin: auto;
+    padding: 10px;
+    border: 2px solid rgba(235, 230, 230, 0.247); 
+}
+
+.carousel-inner  {
+    max-width: 100%;
+    height: 100%;
+}
+
+.carousel{
+    max-width: 800px;
+    height: 100%;
+    margin-right: 15px;
+    margin: auto;
+}
+.carousel-item{
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+ol.carousel-indicators li,
+ol.carousel-indicators li.active {
+  float: left;
+  width: 20px;
+  height: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: 0;
+  background: #6d6e70;
+}
+
+ol.carousel-indicators li.active {
+  background: #ba4545; 
+}
+
+
+.informacion {
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.informacion h1 {
+    margin: 10px 0;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', cursive;
+    text-transform: uppercase;
+    font: 28px;
+}
+
+.informacion h1::first-letter {
+    text-transform: uppercase;
+}
+
+.informacion h3{
+    font-family: 'Montserrat', cursive;
+    margin-top:0px;
+    margin-bottom: 10px;
+    color:rgba(99, 99, 99, 0.842);
+    font-size: 19px;
+    text-transform: uppercase;
+}
+.informacion h3::first-letter {
+    font-size: 20px;
+}
+
+.informacion h5{
+    margin-top:0px;
+    margin-bottom: 10px;
+    color:rgba(48, 48, 48, 0.842);
+    font-size: 24px;
+    font-family: 'Montserrat', cursive;
+}
+
+.informacion button{
+    font-family: 'Montserrat', cursive;
+    border: solid 1px #FFF;
+    background-color: rgba(232, 232, 243, 0.384);
+    border-bottom: 1.5px solid #bb1f13;
+    height: 43px;
+    background-color: #ba4545; 
+    color:rgba(240, 238, 238, 0.966);
+    border-radius: 4px;
+    margin-right: 7px;
+}
+
+.informacion .quantity{
+    font-family: 'Montserrat', cursive;
+    padding: 8px;
+    margin-right: 7px;
+    max-width: 55px;
+    border-radius: 4px;
+    color:rgba(61, 61, 61, 0.966);
+    border: solid 1px rgba(194, 194, 194, 0.966);
+
+}
+
+.informacion button:hover{
+    transition: 0.5s;
+    background-color:#750e10;
+    border-color: #831a1c;
+}
+
+.informacion button i {
+    margin:2px
+}
+.informacion p{
+    line-height: 28px;
+}

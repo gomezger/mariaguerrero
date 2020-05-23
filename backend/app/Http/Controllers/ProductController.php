@@ -61,7 +61,7 @@ class ProductController extends Controller
         FormProductValidator::validate($requestParams);
 
         //original data
-        $images = json_decode(ProductRepo::findById($id)->images,true);
+        $images = ProductRepo::findById($id)->images;
 
         //upload main img 
         if ($request->file('main_photo')!=null){
