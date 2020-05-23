@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: pagine }">
+            <tr *ngFor="let product of products | paginate: { itemsPerPage: cant, currentPage: pagine }">
                 <th scope="row">
                     {{ product.id }}
                 </th>

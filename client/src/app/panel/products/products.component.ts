@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
   // atributes
   public products: Array<Product>;
   public pagine: number = 0;
+  public cant = 10;
   public storage: string;
 
   constructor(
@@ -25,7 +26,7 @@ export class ProductsComponent implements OnInit {
 
   deleteProductView(p: Product){
     this.products.splice(this.products.indexOf(p),1);
-    if(this.pagine>0 && this.products.length%4==0)
+    if(this.pagine>0 && this.products.length%this.cant==0)
       this.pagine--;
   }
 

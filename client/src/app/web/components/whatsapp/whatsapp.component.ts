@@ -18,14 +18,16 @@ export class WhatsappComponent implements OnInit {
     $(document).ready(function() {       
       $(window).scroll(function(){
         var windowHeight = $(window).scrollTop();
-        var contenido2 = $("#footer").offset();
-        //var contenido3 = contenido2.top-700;
-        //console.log(contenido2);    
-        /*if(windowHeight <= contenido2  ){
+        var contenido2 = $('.page-footer').offset();
+        var contenido3 = contenido2.top-800;
+        console.log(contenido3); 
+        console.log(windowHeight ); 
+          
+        if(windowHeight <= contenido3  ){
           $('#whatsapp').fadeIn(500);       
         }else{
           $('#whatsapp').fadeOut(500);
-        }*/
+        }
       });
     });
   }
