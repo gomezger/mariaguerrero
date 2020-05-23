@@ -1,0 +1,68 @@
+
+<!-- Modal -->
+<div #modalUser class="modal fade" [attr.id]="'modalUser-'+user.id" tabindex="-1" role="dialog" aria-labelledby="modalCategoryTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{title}} usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form *ngIf="user" (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">    
+                    <div class="form-row col-12 p-0">
+                
+                        <div class="form-group col-12 mb-3">
+                            <label for="nombreInput">Nombre del usuario</label>
+                            <input 
+                                type="text" class="form-control" 
+                                placeholder="Ingrese el nombre y apellido"
+                                name="name" required
+                                #name="ngModel" [(ngModel)]="user.name"
+                            >
+                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alerta text-danger pt-1 pl-1">
+                                <div *ngIf="name.errors.required">
+                                    El campo nombre es obligatorio
+                                </div>                
+                            </div>
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                            <label for="nombreInput">Correo</label>
+                            <input 
+                                type="text" class="form-control" 
+                                placeholder="Ingrese el correo"
+                                name="email" required
+                                #email="ngModel" [(ngModel)]="user.email"
+                            >
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alerta text-danger pt-1 pl-1">
+                                <div *ngIf="email.errors.required">
+                                    El campo email es obligatorio
+                                </div>                
+                            </div>
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                            <label for="nombreInput">Contraseña</label>
+                            <input 
+                                type="password" class="form-control" 
+                                placeholder="Ingrese las contraseña"
+                                name="password" required
+                                #password="ngModel" [(ngModel)]="user.password"
+                            >
+                        </div>
+                    
+                    </div>
+                    
+                    <div [attr.id]="'alert-user-'+user.id" class="alert d-none clearfix mb-3" role="alert">
+                        Validando datos
+                    </div>
+                    
+                    <div class="form-row col-12 pl-1 mt-2">  
+                        <button type="submit" (onclick)="onSubmit(null)" class="btn btn-info btn-sm">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

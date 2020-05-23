@@ -1,0 +1,22 @@
+<!-- Modal -->
+<div #modalDelete class="modal fade" [attr.id]="'modalDelete-'+category.id" tabindex="-1" role="dialog" aria-labelledby="modalDeleteTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">¿Desea eliminar la categoría {{category.name}}?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div id="alert-delete" class="alert d-none clearfix mb-3" role="alert">
+                Validando datos
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Cancelar</button>
+            <button (click)="delete()" type="button" class="btn btn-danger"><i class="fad fa-trash mr-2"></i> Eliminar</button>
+        </div>
+        </div>
+    </div>
+</div>

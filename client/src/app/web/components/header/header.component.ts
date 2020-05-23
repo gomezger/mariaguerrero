@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Info } from 'src/app/services/info';
+import { Category } from 'src/app/models/category';
 
 
 @Component({
@@ -9,7 +10,8 @@ import { Info } from 'src/app/services/info';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('navbarToggler') navbarToggler:ElementRef;
-  
+  @Input() categories: Array<Category>;  
+
   // attributes
   public lang: string;
   public phone: any;

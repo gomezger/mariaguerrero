@@ -7,6 +7,12 @@
                 <span><i [class]="'mr-2 pt-1 '+button[1]"></i></span>
                 <span class="d-none d-md-inline-block">{{button[2]}}</span>
             </a>
+        </li>  
+        <li *ngFor="let button of buttons_modal" class="ml-auto" aria-current="page" >
+            <a class="text-info" type="button"data-toggle="modal" [attr.data-target]="button[0]">
+                <span><i [class]="'mr-2 pt-1 '+button[1]"></i></span>
+                <span class="d-none d-md-inline-block">{{button[2]}}</span>
+            </a>
         </li>                
     </ol>
 </nav>

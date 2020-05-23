@@ -7,15 +7,18 @@ use App\Exceptions\CategoryException;
 
 class CategoryRepo {
     public static function findById($id){
-        return Category::find($id);
+        return Category::find($id)->load('products');
     }
     
     public static function findAll(){
-        return Category::all();
+        return Category::all()->load('products');
     }
 
     public static function delete($id){
         $category = self::findById($id);
+
+        if(count($category->products)>0)
+            throw new CategoryException(['No se puede eliminar una categoría con productos']);
 
         if(is_null($category))
             throw new CategoryException(['La categoría no existe']);
@@ -35,7 +38,7 @@ class CategoryRepo {
     }
 
     public static function insert($params){
-        return Category::create($params);
+        return Category::create($params)->load('products');
     }
 
 }

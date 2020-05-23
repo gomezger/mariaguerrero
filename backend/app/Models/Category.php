@@ -11,6 +11,6 @@ class Category extends Model
     protected $fillable = ['name'];
 
     public function products(){
-        return $this->HasMany('App\Models\Product','product_id','id');
+        return $this->HasMany('App\Models\Product','category_id','id');
     }
 }

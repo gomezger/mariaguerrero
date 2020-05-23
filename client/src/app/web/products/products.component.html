@@ -13,7 +13,7 @@
               Categorías
             </button>   
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a *ngFor="let category of categories" class="dropdown-item">{{category.name}}</a>
+                <a *ngFor="let category of categories" class="dropdown-item"  [routerLink]="['/productos/', category.id, category.name]" >{{category.name}}</a>
             </div>
         </div>
         
