@@ -1,4 +1,8 @@
 <div class="container">
+
+
+  <loading *ngIf="!product"></loading>
+
   <div *ngIf="product" class="principal mt-4 mb-1">
     <div class="carrusel">
       
@@ -23,7 +27,7 @@
           <h1 class="col-12 p-0">{{product.title}}</h1>
           <h3 class="col-12 p-0">{{product.category.name}}</h3>          
         </div>
-        <div class="col-12 col-lg-5 p-0 pt-5 text-right">
+        <div class="col-12 col-lg-5 p-0 pt-3 pt-md-5 text-right">
           <input type="number" class="d-inline-block pl-2 pr-2 quantity" value="1" min="1" name="cant" />   
           <button class="d-inline-block pl-2 pr-2"><i class="fas fa-cart-plus mr-2"></i> Presupuestar</button>         
           <button class="d-inline-block pl-3 pr-3"><i class="fal fa-envelope"></i></button> 

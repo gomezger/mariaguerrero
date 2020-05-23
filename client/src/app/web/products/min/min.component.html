@@ -1,4 +1,4 @@
-<div [routerLink]="['/producto', product.category.name , product.id, product.title]"  [class]="'animated fadeIn product p-0 pr-md-3 col-12 col-md-'+size">
+<div [routerLink]="['/producto', product.category.name , product.id, product.title]"  [class]="'animated fadeInLeft product p-0 pr-1 pr-sm-2 pr-md-3 col-6 col-sm-'+size[0]+' col-md-'+size[1]">
     <div class="image" [style.backgroundImage]="'url(' + storage + '/' + product.images[0]+')'"></div>
     <div class="description col-12 p-0">
         <h4 class="title col-12 col-lg-7 pt-2 float-left text-center text-lg-left">

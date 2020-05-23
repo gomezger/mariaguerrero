@@ -7,28 +7,40 @@
 </div>
 
 <div class="menu col-12 float-left p-0">
-    <div class="container">       
+    <div class="container">   
+        
+        <!-- categorias -->
         <div class="dropdown show float-left">
-            <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-outline-danger my-0 my-md-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Categorías
             </button>   
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a *ngFor="let category of categories" class="dropdown-item"  [routerLink]="['/productos/', category.id, category.name]" >{{category.name}}</a>
             </div>
         </div>
+
+        <!-- boton para ver busqueda en celular-->
+        <div class="btn-cel text-right d-md-none">
+            <button id="open" (click)="open()" class="btn btn-outline-danger my-sm-0" ><i class="fas fa-search"></i></button>
+            <button id="close"(click)="close()" class="btn btn-outline-danger my-sm-0 d-none" ><i class="far fa-chevron-double-up"></i></button>
+        </div>
         
-        <form class="form-inline my-2 my-lg-0 float-right mr-3">
-            <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        <!-- formulario -->
+        <form class="d-none d-md-inline-block form-inline my-0 my-sm-2 my-lg-0 float-right mr-0 mr-md-3">
+            <input class="form-control mr-2" type="search" placeholder="" aria-label="Search">
+            <button class="btn btn-outline-danger my-2 ml-auto" type="submit"><i class="fas fa-search"></i></button>
         </form>
 
     </div>
 </div>
 
 <section class="products col-12 mt-4 float-left p-0">
-    <div class="container">       
+    <div class="container">   
+        
+        <loading *ngIf="!products"></loading>
+        
         <app-min 
-            [size]="4" 
+            [size]="[6,4]" 
             *ngFor="let p of products  | paginate: { itemsPerPage: 9, currentPage: p }"
             [product]="p"
         ></app-min>

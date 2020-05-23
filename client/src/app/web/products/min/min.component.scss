@@ -31,3 +31,38 @@
     font-size: 15px;
 }
 
+
+@media only screen and (max-width: 1410px) {    
+}
+
+@media only screen and (max-width: 1199px) { 
+    .title{
+        background-size: auto 100% !important;
+    }
+
+    h2{
+        font-size: 30px;
+        padding: 15px 0;
+    }
+    
+
+}
+
+@media only screen and (max-width: 991px) {	
+}
+
+@media only screen and (max-width: 768px) {
+    
+}
+
+@media only screen and (max-width: 575px) {
+    .product{
+        margin-bottom: 15px;
+    }
+    .product .image{
+        background-color: unset;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+}

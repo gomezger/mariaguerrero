@@ -8,7 +8,7 @@ import { GLOBAL } from 'src/app/services/global';
   styleUrls: ['./min.component.scss']
 })
 export class MinComponent implements OnInit {
-  @Input() size: string = '12';
+  @Input() size: Array<string> = ['12','12'];
   @Input() product: Product;
   public storage: string;
 
