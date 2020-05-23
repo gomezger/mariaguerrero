@@ -17,6 +17,7 @@ import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
 import { DetailProductsComponent } from './products/detail-products/detail-products.component';
 import { PresupuestoComponent } from './presupuesto/presupuesto.component';
+import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
 
 
 
@@ -35,6 +36,7 @@ import { PresupuestoComponent } from './presupuesto/presupuesto.component';
     MinComponent,
     DetailProductsComponent,
     PresupuestoComponent, 
+    WhatsappComponent
   ],
   imports: [
     NgxPaginationModule,
