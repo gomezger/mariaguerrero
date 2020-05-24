@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Info } from 'src/app/services/info';
 import { Category } from 'src/app/models/category';
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
@@ -18,7 +19,9 @@ export class HeaderComponent implements OnInit {
   public social: any;
   public city: any;
 
-  constructor() { }
+  constructor(
+    private _productService: ProductService
+  ) { }
 
   ngOnInit(): void {
     this.phone = Info.phone;
@@ -34,6 +37,10 @@ export class HeaderComponent implements OnInit {
     if (this.navBarTogglerIsVisible()) {
       this.navbarToggler.nativeElement.click();
     }
+  }
+
+  replaceUrl(url){
+    return this._productService.replaceUrl(url);
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { GLOBAL } from 'src/app/services/global';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-min',
@@ -12,10 +13,15 @@ export class MinComponent implements OnInit {
   @Input() product: Product;
   public storage: string;
 
-  constructor() { }
+  constructor(
+    private _productService: ProductService
+  ) { }
 
   ngOnInit(): void {
     this.storage = GLOBAL.storage;
   }
-
+  
+  replaceUrl(url){
+    return this._productService.replaceUrl(url);
+  }
 }

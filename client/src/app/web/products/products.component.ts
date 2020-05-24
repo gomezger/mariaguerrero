@@ -15,6 +15,8 @@ export class ProductsComponent implements OnInit {
   p = 0;
   public categories: Array<Category>;
   public products: Array<Product>;
+  public productsAll: Array<Product>;
+  public filter: string = '';
 
   constructor(
     private _categoriesService: CategoriesService,
@@ -44,6 +46,7 @@ export class ProductsComponent implements OnInit {
       (response) => {
         if(response.status==='success'){
           this.products = response.productos;
+          this.productsAll = this.products;
         }
       },
       (error) =>{
@@ -79,12 +82,48 @@ export class ProductsComponent implements OnInit {
 
   
     // agrega el efecto de animate css y 300ms lo saca para que pueda ser usado nuevamente 
-    setEfecto(div,efecto){        
-      div.classList.add('animated');
-      setTimeout(function (){
-          div.classList.remove('animated', efecto);
-      },300);
+  setEfecto(div,efecto){        
+    div.classList.add('animated');
+    setTimeout(function (){
+        div.classList.remove('animated', efecto);
+    },300);
   }
 
+  
+  // filtrar productos por nombre o codigo
+  filtrar() {
+    let prof = [];
+    this.products = null;
+    this.productsAll.forEach((element) => {
+      if (
+        element.title.toLowerCase().search(this.filter.toLowerCase()) !== -1 ||
+        element.category.name.toLowerCase().search(this.filter.toLowerCase()) !== -1 
+      ) {
+        prof.push(element);
+      }
+    });
 
+    this.products = prof;
+
+    if(this.filter=='')
+      this.products = this.productsAll;
+
+
+    // mstrar mensaje de cargando y sacar al segundo  
+    document.getElementById('loading').classList.remove('d-none');
+    document.getElementById('products').classList.add('d-none');
+
+    setTimeout(
+      function (){
+        document.getElementById('loading').classList.add('d-none');   
+        document.getElementById('products').classList.remove('d-none');  
+      }, 
+      1000
+    );
+  }
+  
+  replaceUrl(url){
+    return this._productsService.replaceUrl(url);
+  }
 }
+

@@ -95,6 +95,10 @@ export class ProductService {
     return this._http.delete(this.url + '/products/' + product.id, headers);
   }
 
+  
+  replaceUrl(url){
+    return url.replace(/[^a-zA-Z 0-9.]+/g,'').replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-').toLowerCase();
+  }
 
 
 }

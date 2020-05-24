@@ -1,6 +1,7 @@
 import { Category } from './category';
 
 export class Product {
+
     constructor(
         public id: number,
         public title: string,
@@ -10,5 +11,6 @@ export class Product {
         public description: string,
         public created_at: Date,
         public updated_at: Date
-    ){}
+    ){
+    }
 }

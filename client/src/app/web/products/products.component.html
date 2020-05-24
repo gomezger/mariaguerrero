@@ -15,7 +15,7 @@
               Categorías
             </button>   
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a *ngFor="let category of categories" class="dropdown-item"  [routerLink]="['/productos/', category.id, category.name]" >{{category.name}}</a>
+                <a *ngFor="let category of categories" class="dropdown-item"  [routerLink]="['/productos/', category.id, replaceUrl(category.name)]" >{{category.name}}</a>
             </div>
         </div>
 
@@ -27,8 +27,8 @@
         
         <!-- formulario -->
         <form class="d-none d-md-inline-block form-inline my-0 my-sm-2 my-lg-0 float-right mr-0 mr-md-3">
-            <input class="form-control mr-2" type="search" placeholder="" aria-label="Search">
-            <button class="btn btn-outline-danger my-2 ml-auto" type="submit"><i class="fas fa-search"></i></button>
+            <input [(ngModel)]="filter" (input)="filtrar()" class="form-control mr-2" name="filter" aria-label="Search">
+            <button (click)="filtrar()" class="btn btn-outline-danger my-2 ml-auto" type="submit"><i class="fas fa-search"></i></button>
         </form>
 
     </div>
@@ -36,15 +36,35 @@
 
 <section class="products col-12 mt-4 float-left p-0">
     <div class="container">   
+
         
+        
+        <!-- logo de cargando si no respondio el banckend-->
         <loading *ngIf="!products"></loading>
+
+        <!-- logo de cargando para cuando el cliente busca-->
+        <loading id="loading" class="d-none"></loading>
         
-        <app-min 
-            [size]="[6,4]" 
-            *ngFor="let p of products  | paginate: { itemsPerPage: 9, currentPage: p }"
-            [product]="p"
-        ></app-min>
+
+        <!-- productos-->
+        <div id="products" class="col-12 p-0">
+            
+            <!-- mensaje por si no hay productos-->
+            <h4 *ngIf="products && products.length==0" class="mt-5 mb-5 text-center col-12">
+                No hay productos
+            </h4>
+
+            <!-- Productos -->
+            <app-min 
+                [size]="[6,4]" 
+                *ngFor="let p of products  | paginate: { itemsPerPage: 9, currentPage: p }"
+                [product]="p"
+            ></app-min>
+        </div>
+
         <div class="clearfix"></div>
+
+        <!-- paginate -->
         <div class="col-12 pt-3 pb-3 text-center clearfix">
             <pagination-controls class="pagination d-inline-block clearfix" (pageChange)="p = $event" autoHide="true" responsive="true"
             directionLinks="true" previousLabel="Anterior" nextLabel="Siguiente" maxSize="10"></pagination-controls>   

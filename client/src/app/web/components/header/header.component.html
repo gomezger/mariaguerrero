@@ -58,7 +58,7 @@
             categorías
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a *ngFor="let category of categories" class="dropdown-item" (click)="collapseNav();" [routerLink]="['/productos/', category.id, category.name]">{{category.name}}</a>
+            <a *ngFor="let category of categories" class="dropdown-item" (click)="collapseNav();" [routerLink]="['/productos/', category.id, replaceUrl(category.name)]">{{category.name}}</a>
           </div>
         </li>
         <li class="nav-item">
