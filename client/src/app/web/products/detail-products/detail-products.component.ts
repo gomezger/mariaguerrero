@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Router,Route, ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { GLOBAL } from 'src/app/services/global';
+import { ShopcartService } from 'src/app/services/shopcart.service'
 
 @Component({
   selector: 'app-detail-products',
@@ -17,7 +18,8 @@ export class DetailProductsComponent implements OnInit {
 
   constructor(
     private _productService: ProductService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _shopCart: ShopcartService
   ) { }
 
   ngOnInit(): void {
@@ -41,8 +43,13 @@ export class DetailProductsComponent implements OnInit {
 
       }
     );
+  }
 
-
+  enviarPresupuestar(){
+    let elememento = <HTMLInputElement>  document.getElementById('cantidad-r');
+    let cantidad = elememento.value
+    console.log(cantidad);
+    this._shopCart.saveProduct(this.product,cantidad);
   }
 
 }
