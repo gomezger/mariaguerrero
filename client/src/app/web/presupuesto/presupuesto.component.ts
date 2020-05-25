@@ -17,16 +17,16 @@ export class PresupuestoComponent implements OnInit {
   constructor(private _shopcart:ShopcartService) { }
 
   ngOnInit(): void {
-    let p1:Product;
-    let p2:Product;
-    let p3:Product;
-    p1 = new Product(1,'Producto Prueba 1',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
-    p2 = new Product(1,'Producto Prueba 2',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
-    p3 = new Product(1,'Producto Prueba 3',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
+    // let p1:Product;
+    // let p2:Product;
+    // let p3:Product;
+    // p1 = new Product(1,'Producto Prueba 1',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
+    // p2 = new Product(1,'Producto Prueba 2',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
+    // p3 = new Product(1,'Producto Prueba 3',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
 
-    this._shopcart.saveProduct(p1,2);
-    this._shopcart.saveProduct(p2,1);
-    this._shopcart.saveProduct(p3,5);
+    // this._shopcart.saveProduct(p1,2);
+    // this._shopcart.saveProduct(p2,1);
+    // this._shopcart.saveProduct(p3,5);
 
     this.presupuesto= this._shopcart.getProducts();
     this.cantidades =this._shopcart.getCantidades();
