@@ -11,9 +11,17 @@
     <strong>Teléfono</strong>: {!! $phone !!}<br>
     <p>Productos:</p>
     <ul>    
-        @foreach ($products as $product)
-            <li>{!! $product['title'] !!} </li>
-        @endforeach
+        @for ($i = 0; $i < count($products); $i++)
+            <li>
+                {!! $products[$i]['title'] !!}: 
+                {!! $cantidades[$i] !!}
+                @if ($cantidades[$i]==1)
+                    unidad
+                @else
+                    unidades
+                @endif            
+            </li>
+        @endfor
     </ul>
     
 </body>
