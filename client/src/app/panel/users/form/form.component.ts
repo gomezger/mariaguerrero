@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,6 +8,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  @ViewChild('closebutton') closebutton;
+  
   @Input() user: User;
   @Input() title: string = 'Crear';
   @Output() addUserView = new EventEmitter<User>();
@@ -39,15 +41,14 @@ export class FormComponent implements OnInit {
         if(response.status == 'success'){
 
           //ocultar modal
-          document.getElementById('modalUser-'+this.user.id).classList.remove('show');
-          document.getElementsByClassName('modal-backdrop')[0].remove();
-          document.body.classList.remove('modal-open');
-          document.getElementById('modalUser-'+this.user.id).removeAttribute('style');
+          this.closebutton.nativeElement.click();
   
           this.user = response.usuario;
 
           //eliminar prodcuto de la lista
           this.addUserView.emit(this.user);
+
+          this.user = new User(0,"","","",null,null);
         
         }else if(response.status == 'error'){
           this.setMessage('alert-user-'+this.user.id,'alert-danger',response.errors);
@@ -68,15 +69,13 @@ export class FormComponent implements OnInit {
           const old = this.user;
 
           //ocultar modal
-          document.getElementById('modalUser-'+this.user.id).classList.remove('show');
-          document.getElementsByClassName('modal-backdrop')[0].remove();
-          document.body.classList.remove('modal-open');
-          document.getElementById('modalUser-'+this.user.id).removeAttribute('style');
+          this.closebutton.nativeElement.click();
   
           this.user = response.usuario;
 
           //eliminar prodcuto de la lista
           this.editUserView.emit([this.user,old]);
+
         
         }else if(response.status == 'error'){
           console.log(response);

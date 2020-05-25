@@ -12,6 +12,8 @@
 
 <section class="table-list table-responsive">
 
+    <input id="input-filter" [(ngModel)]="filter" (input)="filtrar()" placeholder="Ingrese título o categoría" autocomplete="off" class="form-control" name="filter" aria-label="Search">
+
     <loading *ngIf="!products"></loading>
     
     <h4 *ngIf="products && products.length==0" class=" text-center col-12">No hay productos</h4> 

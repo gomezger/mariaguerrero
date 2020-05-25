@@ -11,9 +11,11 @@ import { GLOBAL } from 'src/app/services/global';
 export class ProductsComponent implements OnInit {
   // atributes
   public products: Array<Product>;
+  public productsAll: Array<Product>;
   public pagine: number = 0;
   public cant = 10;
   public storage: string;
+  public filter: string = '';
 
   constructor(
     private _productService: ProductService
@@ -24,6 +26,10 @@ export class ProductsComponent implements OnInit {
     this.getProductos();
   }
 
+  /**
+   * Delect a product in the view
+   * @param p 
+   */
   deleteProductView(p: Product){
     this.products.splice(this.products.indexOf(p),1);
     if(this.pagine>0 && this.products.length%this.cant==0)
@@ -38,6 +44,7 @@ export class ProductsComponent implements OnInit {
       (response) => {
         if(response.status === 'success'){
           this.products = response.productos;
+          this.productsAll = response.productos; 
         }else if(response.status === 'error'){
           this.setMessage('alert','alert-danger',response.errors);
         }
@@ -47,10 +54,6 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-
-  
-
-
 
   /**
    * set message
@@ -71,6 +74,26 @@ export class ProductsComponent implements OnInit {
     }else{
       div.innerText = err;
     }
+  }
+
+   // filtrar productos por nombre o codigo
+   filtrar() {
+    let prof = [];
+    this.products = null;
+    this.productsAll.forEach((element) => {
+      if (
+        element.title.toLowerCase().search(this.filter.toLowerCase()) !== -1 ||
+        element.category.name.toLowerCase().search(this.filter.toLowerCase()) !== -1 
+      ) {
+        prof.push(element);
+      }
+    });
+
+    this.products = prof;
+
+    if(this.filter=='')
+      this.products = this.productsAll;
+
   }
 
 

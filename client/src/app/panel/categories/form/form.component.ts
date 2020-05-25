@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 
@@ -8,6 +8,8 @@ import { CategoriesService } from 'src/app/services/categories.service';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  @ViewChild('closebutton') closebutton;
+  
   @Input() category: Category;
   @Input() title: string = 'Crear';
   @Output() addCategoryView = new EventEmitter<Category>();
@@ -40,15 +42,16 @@ export class FormComponent implements OnInit {
         if(response.status == 'success'){
 
           //ocultar modal
-          document.getElementById('modalCategory-'+this.category.id).classList.remove('show');
-          document.getElementsByClassName('modal-backdrop')[0].remove();
-          document.body.classList.remove('modal-open');
-          document.getElementById('modalCategory-'+this.category.id).removeAttribute('style');
+          this.closebutton.nativeElement.click();
   
+          // guardar categorias
           this.category = response.categoria;
 
-          //eliminar prodcuto de la lista
+          //eliminar categoria de la lista
           this.addCategoryView.emit(this.category);
+
+          //reinicio la categoria
+          this.category = new Category(0,"",null,null);
         
         }else if(response.status == 'error'){
           this.setMessage('alert-form','alert-danger',response.errors);
@@ -69,10 +72,7 @@ export class FormComponent implements OnInit {
           const old_cat = this.category;
 
           //ocultar modal
-          document.getElementById('modalCategory-'+this.category.id).classList.remove('show');
-          document.getElementsByClassName('modal-backdrop')[0].remove();
-          document.body.classList.remove('modal-open');
-          document.getElementById('modalCategory-'+this.category.id).removeAttribute('style');
+          this.closebutton.nativeElement.click();
   
           this.category = response.categoria;
 
