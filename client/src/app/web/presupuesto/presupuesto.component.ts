@@ -35,4 +35,12 @@ export class PresupuestoComponent implements OnInit {
     console.log(this.cantidades);
   }
 
+  eliminarElemento(i){
+    console.log(i)
+    this.presupuesto.splice(i,1);
+    this.cantidades.splice(i,1);
+    this._shopcart.eliminar(i);
+
+  }
+
 }

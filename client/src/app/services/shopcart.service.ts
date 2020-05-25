@@ -38,6 +38,19 @@ export class ShopcartService {
     }
   }
 
+  eliminar(i){
+    if (localStorage.getItem('presupuesto')&& localStorage.getItem('cantidades')){
+      let presupuesto= [];
+      let cantidades = [];
+      presupuesto = JSON.parse(localStorage.getItem('presupuesto'));
+      cantidades = JSON.parse(localStorage.getItem('cantidades'));
+      presupuesto.splice(i,1);
+      cantidades.splice(i,1);
+      localStorage.setItem('presupuesto',JSON.stringify(presupuesto));
+      localStorage.setItem('cantidades',JSON.stringify(cantidades));
+    }
+  }
+
 
 
 }
