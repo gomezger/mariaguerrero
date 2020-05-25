@@ -21,7 +21,8 @@ export class DetailProductsComponent implements OnInit {
     private _productService: ProductService,
     private _activatedRoute: ActivatedRoute,
     private _shopCart: ShopcartService,
-    private _title: Title
+    private _title: Title,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +55,7 @@ export class DetailProductsComponent implements OnInit {
     let cantidad = elememento.value
     console.log(cantidad);
     this._shopCart.saveProduct(this.product,cantidad);
+    this._router.navigate(['presupuesto']);
   }
 
 }
