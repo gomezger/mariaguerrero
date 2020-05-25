@@ -30,6 +30,54 @@
         </tbody>
       </table>
       <div class="mb-3">
-        <button type="button" class="btn btn-danger col-12 ">Enviar a Presupuestar</button>
+        <button type="button" class="col-6 btn btn-success ">Whatsapp <i class="fab fa-whatsapp"></i></button>
+        <button type="button" class="col-6 btn btn-danger" data-toggle="modal" data-target="#exampleModal">Mail <i class="far fa-envelope"></i></button>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Datos de Email</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">  
+              <!-- Formulario Modal -->
+              <form>
+                <div class="col-12 col-md-12 form-group d-inline-block p-0 pr-1">
+                    <label for="nombreInput">Nombre y apellido</label>
+                    <input type="text" class="form-control" id="nombreInput" name="nombre" #nombre="ngModel"  [(ngModel)]="myContacto.nombre" required>
+                    <div class="alert alert-danger mt-2" role="alert" *ngIf="nombre.touched && !nombre.valid">
+                        Por favor, ingrese su Nombre y Apellido.
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 form-group d-inline-block p-0 pr-1">
+                    <label for="telefonoInput">Teléfono</label>
+                    <input type="text" class="form-control" id="telefonoInput" name="telelfono" #telefono="ngModel" [(ngModel)]="myContacto.phone" required>
+                    <div class="alert alert-danger mt-2" role="alert" *ngIf="telefono.touched && !telefono.valid">
+                        Verifique su numero de telefono.
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 form-group d-inline-block p-0">
+                    <label for="emailInput">Email</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="correo@dominio.com" name="email" #email="ngModel" [(ngModel)]="myContacto.from" required>
+                    <div class="alert alert-danger mt-2" role="alert" *ngIf="email.touched && !email.valid">
+                        Verifique su correo electronico.
+                    </div>
+                </div>                
+
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 </div>
