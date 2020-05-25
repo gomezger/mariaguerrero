@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product';
 import * as $ from 'jquery';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-products',
@@ -20,12 +21,14 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private _categoriesService: CategoriesService,
-    private _productsService: ProductService
+    private _productsService: ProductService,
+    private _title: Title
   ) { }
 
   ngOnInit(): void {
     this.getCategories();
     this.getProducts();
+    this._title.setTitle('Productos | Maria Guerrero: Muebles y objetos | Bahía Blanca');    
   }
 
   private getCategories(){

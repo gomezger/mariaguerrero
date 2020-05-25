@@ -4,6 +4,7 @@ import { Router,Route, ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { GLOBAL } from 'src/app/services/global';
 import { ShopcartService } from 'src/app/services/shopcart.service'
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail-products',
@@ -19,7 +20,8 @@ export class DetailProductsComponent implements OnInit {
   constructor(
     private _productService: ProductService,
     private _activatedRoute: ActivatedRoute,
-    private _shopCart: ShopcartService
+    private _shopCart: ShopcartService,
+    private _title: Title
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,8 @@ export class DetailProductsComponent implements OnInit {
           this.mainPhoto = this.product.images[0];
           this.photos = this.product.images;
           this.photos.splice(0,1);
+          
+          this._title.setTitle(this.product.title+' | Maria Guerrero: Muebles y objetos | Bahía Blanca');    
         }
       },
       (error)=>{

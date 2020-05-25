@@ -3,6 +3,7 @@ import {ShopcartService} from '../../services/shopcart.service'
 
 import {Product} from '../../models/product';
 import {Category}from '../../models/category';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-presupuesto',
@@ -14,7 +15,10 @@ export class PresupuestoComponent implements OnInit {
   public presupuesto:Product [];
   public cantidades:[];
 
-  constructor(private _shopcart:ShopcartService) { }
+  constructor(
+    private _shopcart:ShopcartService,
+    private _title: Title
+  ) { }
 
   ngOnInit(): void {
     // let p1:Product;
@@ -33,6 +37,9 @@ export class PresupuestoComponent implements OnInit {
 
     console.log(this.presupuesto);
     console.log(this.cantidades);
+
+    
+    this._title.setTitle('Presupuesto | Maria Guerrero: Muebles y objetos | Bahía Blanca');  
   }
 
   eliminarElemento(i){
