@@ -26,4 +26,16 @@ export class MailSenderService {
     }
     return this._http.post(this.url+'/contact',JSON.stringify(body),{headers:headers}) 
   }
+
+  public sendMailPresupuesto(name,from,phone,products){
+    let headers =new HttpHeaders();
+    let subject = 'PEDIDO PRESUPUESTO a MARIA GUERRERO DECORACIÓN de: ' + name; 
+    let body={
+      name:name,
+      from:from,
+      phone:phone,
+      products:products
+    }
+    return this._http.post(this.url+'/budget',JSON.stringify(body),{headers:headers});
+  }
 }
