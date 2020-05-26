@@ -27,14 +27,15 @@ export class MailSenderService {
     return this._http.post(this.url+'/contact',JSON.stringify(body),{headers:headers}) 
   }
 
-  public sendMailPresupuesto(name,from,phone,products){
+  public sendMailPresupuesto(name,from,phone,products,cantidades){
     let headers =new HttpHeaders();
     let subject = 'PEDIDO PRESUPUESTO a MARIA GUERRERO DECORACIÓN de: ' + name; 
     let body={
       name:name,
       from:from,
       phone:phone,
-      products:products
+      products:products,
+      cantidades: cantidades
     }
     return this._http.post(this.url+'/budget',JSON.stringify(body),{headers:headers});
   }

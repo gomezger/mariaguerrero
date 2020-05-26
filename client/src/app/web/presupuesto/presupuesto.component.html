@@ -46,7 +46,7 @@
             </div>
             <div class="modal-body">  
               <!-- Formulario Modal -->
-              <form>
+              <form #presupuestoForm="ngForm" (ngSubmit)="enviarPresupuestoMail()">
                 <div class="col-12 col-md-12 form-group d-inline-block p-0 pr-1">
                     <label for="nombreInput">Nombre y apellido</label>
                     <input type="text" class="form-control" id="nombreInput" name="nombre" #nombre="ngModel"  [(ngModel)]="myContacto.nombre" required>
@@ -74,7 +74,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger">Enviar</button>
+              <button type="button" class="btn btn-danger" (click)="enviarPresupuestoMail()">Enviar</button>
             </div>
           </div>
         </div>

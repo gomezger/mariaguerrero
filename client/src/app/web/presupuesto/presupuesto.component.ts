@@ -53,8 +53,19 @@ export class PresupuestoComponent implements OnInit {
     this._shopcart.eliminar(i);
   }
 
+  onSumbmit(){
+    this.enviarPresupuestoMail();
+  }
+
   enviarPresupuestoMail(){
-    this._mailSender.sendMailPresupuesto(this.myContacto.nombre,this.myContacto.from,this.myContacto.phone,this.presupuesto).subscribe();
+    this._mailSender.sendMailPresupuesto(this.myContacto.nombre,this.myContacto.from,this.myContacto.phone,this.presupuesto,this.cantidades)
+    .subscribe(
+      response=>{
+        console.log(JSON.stringify(this.myContacto));
+        console.log('exito');
+      },
+      error=>{}
+    );
   }
 
 }
