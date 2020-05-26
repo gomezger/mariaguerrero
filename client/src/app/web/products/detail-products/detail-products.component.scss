@@ -1,3 +1,11 @@
+.container{
+    min-height: 700px;
+}
+
+.loading{
+    padding-top: 500px;
+}
+
 .principal{
     background-color:rgba(235, 230, 230, 0.247);
     height: 700;
@@ -109,7 +117,7 @@ ol.carousel-indicators li.active {
 .informacion button i {
     margin:2px
 }
-.informacion p{
+.informacion .description{
     line-height: 28px;
 }
 

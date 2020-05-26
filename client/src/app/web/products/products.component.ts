@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Observable } from 'rxjs';
@@ -6,57 +6,96 @@ import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product';
 import * as $ from 'jquery';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, DoCheck {
   p = 0;
   public categories: Array<Category>;
   public products: Array<Product>;
   public productsAll: Array<Product>;
   public filter: string = '';
+  public category_id: Number = null;
 
   constructor(
     private _categoriesService: CategoriesService,
     private _productsService: ProductService,
-    private _title: Title
+    private _route: ActivatedRoute,
+    private _title: Title,
+    private _filterService: FilterService
   ) { }
 
   ngOnInit(): void {
-    this.getCategories();
     this.getProducts();
-    this._title.setTitle('Productos | Maria Guerrero: Muebles y objetos | Bahía Blanca');    
+    this._title.setTitle('Productos | Maria Guerrero: Muebles y objetos | Bahía Blanca');  
+    this.getCategories();       
+  }
+
+  ngDoCheck(): void {
+    //verifica si cambio la categoria
+    if(this.category_id!=+this._route.snapshot.paramMap.get('id')){
+      this.category_id = +this._route.snapshot.paramMap.get('id');
+      this.filtrarCategory();
+    }
   }
 
   private getCategories(){
-    this._categoriesService.getCategories().subscribe(
+    this._categoriesService.getCategories().toPromise().then(
       (response) => {
         if(response.status==='success'){
           this.categories = response.categorias;
         }
       },
-      (error) =>{
-
-      }
+      (error) =>{}
     );
   }
 
+  private getCategory(id: Number): Category{
+    this.categories.forEach((element) => {
+      if(element.id==id)
+        return element;
+    });
+    return null;
+  }
+
+
+
+
   private getProducts(){
+    const id = +this._route.snapshot.paramMap.get('id');
+
+    if(id==0){
+      this.getAllProducts(false);
+    }else{
+      this.category_id = id;
+      this.getAllProducts(true);
+
+    }
+    
+  }
+
+  private getAllProducts(filter: boolean){
     this._productsService.getAll().subscribe(
       (response) => {
         if(response.status==='success'){
           this.products = response.productos;
           this.productsAll = this.products;
+
+          if(filter){
+            this.filtrarCategory();
+          }
         }
       },
       (error) =>{
-
       }
     );
   }
+
 
   open(){
     //cambiar botones
@@ -95,23 +134,31 @@ export class ProductsComponent implements OnInit {
   
   // filtrar productos por nombre o codigo
   filtrar() {
-    let prof = [];
-    this.products = null;
-    this.productsAll.forEach((element) => {
-      if (
-        element.title.toLowerCase().search(this.filter.toLowerCase()) !== -1 ||
-        element.category.name.toLowerCase().search(this.filter.toLowerCase()) !== -1 
-      ) {
-        prof.push(element);
-      }
-    });
+    if(this.category_id==null){
+      this.products = this._filterService.filterProductsByText(this.productsAll,this.filter);    
+      this.efectLoading();
+    }else{
+      this.filtrarCategory();
+    }
+  }
 
-    this.products = prof;
+  /**
+   * Filtra por el filtro elegido y la catgeoria
+   */
+  filtrarCategory() {
+    this.products = this._filterService.filterProductsByText(this.productsAll,this.filter);    
+    this.products = this._filterService.filterProductsByCategoryId(this.products, this.category_id);   
+    this.efectLoading(); 
+  }
 
-    if(this.filter=='')
-      this.products = this.productsAll;
+  changeCategory(name: string){
+    //document.getElementById('title').innerText = name;
+  }
 
-
+  /**
+   * Un efecto de 1seg donde carga la pantalla
+   */
+  efectLoading(){
     // mstrar mensaje de cargando y sacar al segundo  
     document.getElementById('loading').classList.remove('d-none');
     document.getElementById('products').classList.add('d-none');
@@ -128,5 +175,7 @@ export class ProductsComponent implements OnInit {
   replaceUrl(url){
     return this._productsService.replaceUrl(url);
   }
+
+
 }
 

@@ -23,6 +23,11 @@ export class CategoriesService {
     const headers = new HttpHeaders();
     return this._http.get(this.url+'/categories', {headers: headers});
   } 
+  
+  public getCategory(id: Number): Observable<any>{
+    const headers = new HttpHeaders();
+    return this._http.get(this.url+'/categories/' + id, {headers: headers});
+  } 
 
   public delete(category: Category): Observable<any> {
     const headers = new HttpHeaders(

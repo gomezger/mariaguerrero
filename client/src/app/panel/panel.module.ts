@@ -17,6 +17,7 @@ import { UsersComponent } from './users/users.component';
 import { FormComponent as FormUsersComponent } from './users/form/form.component';
 import { ModelDeleteComponent as ModalDeleteUsetComponente } from './users/model-delete/model-delete.component';
 import { LoadingComponent } from './componets/loading/loading.component';
+import { CKEditorModule } from 'ngx-ckeditor';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { LoadingComponent } from './componets/loading/loading.component';
     FroalaViewModule.forRoot(),
     CommonModule,
     PanelRoutingModule,
+    CKEditorModule,
     FormsModule
   ]
 })

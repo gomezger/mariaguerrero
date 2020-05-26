@@ -48,6 +48,7 @@ Route::group(['middleware' => ['cors']], function () {
 
     //categories
     Route::get('categories', 'CategoryController@getAll');  
+    Route::get('categories/{id}', 'CategoryController@getById');  
 
     //mail
     Route::post('contact', 'SendEmailController@contact');

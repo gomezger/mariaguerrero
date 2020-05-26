@@ -41,7 +41,7 @@ export class DetailProductsComponent implements OnInit {
           this.photos = this.product.images;
           this.photos.splice(0,1);
           
-          this._title.setTitle(this.product.title+' | Maria Guerrero: Muebles y objetos | Bahía Blanca');    
+          this._title.setTitle(this.product.title+' | ' + this.product.category.name + ' | Maria Guerrero: Muebles y objetos | Bahía Blanca');    
         }
       },
       (error)=>{

@@ -7,7 +7,7 @@ use App\Exceptions\CategoryException;
 
 class CategoryRepo {
     public static function findById($id){
-        return Category::find($id)->load('products');
+        return Category::find($id);
     }
     
     public static function findAll(){

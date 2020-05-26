@@ -1,7 +1,7 @@
 <div class="float-left title col-12 p-0">
     <div class="gradient float-left col-12 p-0 pb-3">
       <div class="container text-center pt-3">
-          <h2 class="animated fadeInDown">Muebles y objetos</h2>
+          <h2 id="title" class="animated fadeInDown">Muebles y objetos</h2>
       </div>
     </div>
 </div>
@@ -12,10 +12,10 @@
         <!-- categorias -->
         <div class="dropdown show float-left">
             <button class="btn btn-outline-danger my-0 my-md-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categorías
+                <span>Categorías</span>                 
             </button>   
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a *ngFor="let category of categories" class="dropdown-item"  [routerLink]="['/productos/', category.id, replaceUrl(category.name)]" >{{category.name}}</a>
+                <a *ngFor="let category of categories" class="dropdown-item" (click)="changeCategory(category.name)" [routerLink]="['/productos/', category.id, replaceUrl(category.name)]" >{{category.name}}</a>
             </div>
         </div>
 

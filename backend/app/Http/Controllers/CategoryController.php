@@ -26,7 +26,7 @@ class CategoryController extends Controller{
     }
 
     public function getById($id){
-        $category= CategoryRepo::getById($id);
+        $category = CategoryRepo::findById($id);
         return Response::success('Categoria cargada','categoria',$category);
     }
 

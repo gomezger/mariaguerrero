@@ -64,14 +64,9 @@
 
     <div class="form-row col-12 p-0">  
         <div class="form-group col-12 mb-3 p-0">
-            <label for="imagenInput">Descripción</label>
-            <textarea 
-                name="description" 
-                #description="ngModel" 
-                [(ngModel)]="product.description" 
-                placeholder="Ingrese la descriptión del producto"
-                [froalaEditor]="options">                
-            </textarea>
+            <label for="imagenInput">Descripción</label>     
+            <ck-editor class="editor" name="description" #description="ngModel" [(ngModel)]="product.description" skin="moono-lisa" language="es" [fullPage]="true">
+            </ck-editor>
         </div>
     </div>
     
