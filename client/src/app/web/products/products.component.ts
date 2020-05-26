@@ -55,15 +55,6 @@ export class ProductsComponent implements OnInit, DoCheck {
     );
   }
 
-  private getCategory(id: Number): Category{
-    this.categories.forEach((element) => {
-      if(element.id==id)
-        return element;
-    });
-    return null;
-  }
-
-
 
 
   private getProducts(){
@@ -94,43 +85,7 @@ export class ProductsComponent implements OnInit, DoCheck {
       (error) =>{
       }
     );
-  }
-
-
-  open(){
-    //cambiar botones
-    document.getElementById('open').classList.add('d-none');
-    document.getElementById('close').classList.remove('d-none');
-
-    //abrir la barra de busqueda
-    const form = document.getElementsByClassName('form-inline')[0];
-    form.classList.remove('d-none');
-    this.setEfecto(form,'fadeInDown');
-
-  }
-
-  
-  close(){
-    //cambiar botones
-    document.getElementById('open').classList.remove('d-none');
-    document.getElementById('close').classList.add('d-none');
-
-    //abrir la barra de busqueda
-    const form = document.getElementsByClassName('form-inline')[0];
-    this.setEfecto(form,'fadeOutUp');
-    form.classList.add('d-none');
-
-  }
-
-  
-    // agrega el efecto de animate css y 300ms lo saca para que pueda ser usado nuevamente 
-  setEfecto(div,efecto){        
-    div.classList.add('animated');
-    setTimeout(function (){
-        div.classList.remove('animated', efecto);
-    },300);
-  }
-
+  }  
   
   // filtrar productos por nombre o codigo
   filtrar() {
@@ -151,10 +106,6 @@ export class ProductsComponent implements OnInit, DoCheck {
     this.efectLoading(); 
   }
 
-  changeCategory(name: string){
-    //document.getElementById('title').innerText = name;
-  }
-
   /**
    * Un efecto de 1seg donde carga la pantalla
    */
@@ -171,6 +122,44 @@ export class ProductsComponent implements OnInit, DoCheck {
       1000
     );
   }
+
+  /**
+   * Abre el menu en el celular
+   */
+  open(){
+    //cambiar botones
+    document.getElementById('open').classList.add('d-none');
+    document.getElementById('close').classList.remove('d-none');
+
+    //abrir la barra de busqueda
+    const form = document.getElementsByClassName('form-inline')[0];
+    form.classList.remove('d-none');
+    this.setEfecto(form,'fadeInDown');
+
+  }
+
+  /**
+   * cierra el menu en el celular
+   */
+  close(){
+    //cambiar botones
+    document.getElementById('open').classList.remove('d-none');
+    document.getElementById('close').classList.add('d-none');
+
+    //abrir la barra de busqueda
+    const form = document.getElementsByClassName('form-inline')[0];
+    this.setEfecto(form,'fadeOutUp');
+    form.classList.add('d-none');
+
+  }
+  // agrega el efecto de animate css y 300ms lo saca para que pueda ser usado nuevamente 
+  setEfecto(div,efecto){        
+    div.classList.add('animated');
+    setTimeout(function (){
+        div.classList.remove('animated', efecto);
+    },300);
+  }
+
   
   replaceUrl(url){
     return this._productsService.replaceUrl(url);

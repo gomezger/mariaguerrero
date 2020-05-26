@@ -15,7 +15,7 @@
                 <span>Categorías</span>                 
             </button>   
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a *ngFor="let category of categories" class="dropdown-item" (click)="changeCategory(category.name)" [routerLink]="['/productos/', category.id, replaceUrl(category.name)]" >{{category.name}}</a>
+                <a *ngFor="let category of categories" class="dropdown-item"  [routerLink]="['/productos/', category.id, replaceUrl(category.name)]" >{{category.name}}</a>
             </div>
         </div>
 
