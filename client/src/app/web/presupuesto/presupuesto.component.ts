@@ -4,7 +4,8 @@ import {MailSenderService} from 'src/app/services/mail-sender.service';
 import {Contacto}from '../../models/contacto';
 import {Product} from '../../models/product';
 import { Title } from '@angular/platform-browser';
-import {Category}from 'src/app/models/category';
+import { Router,Route, ActivatedRoute } from '@angular/router';
+// import {Category}from 'src/app/models/category';
 
 @Component({
   selector: 'app-presupuesto',
@@ -19,7 +20,8 @@ export class PresupuestoComponent implements OnInit {
   constructor(
     private _shopcart:ShopcartService,
     private _title: Title,
-    private _mailSender:MailSenderService
+    private _mailSender:MailSenderService,
+    private _router: Router
   ) { 
     this.myContacto=new Contacto('','','','');
   }
@@ -66,6 +68,20 @@ export class PresupuestoComponent implements OnInit {
       },
       error=>{}
     );
+  }
+
+  enviarWp(){
+    // <a target="_blank" href="https://api.whatsapp.com/send?phone=54{{informacion.telefono}}&text=¡Hola {{informacion.nombre}}!, me interesa el {{profesional.tipo_profesional.nombre.toLowerCase()}} {{profesional.nombre}}." class="boton col-6">Contactar</a>
+    let telefono='542914411801'; 
+    let texto:String;
+    texto='';
+    this.presupuesto.forEach((element,index)=>{
+      texto.concat(JSON.stringify(element.title) + ' x'+ JSON.stringify(this.cantidades[index])+'-'); 
+    });
+    let mensaje = `Hola Matias, deseo presupuestar esto: ${texto}`;
+    // this._router.navigate([`https://api.whatsapp.com/send?phone=${telefono}&text=${texto}`]);
+    // this._router.navigate([`https://api.whatsapp.com/send?phone=542914411801&text=Hola wacho!`]);
+    window.location.href=`https://api.whatsapp.com/send?phone=${telefono}&text=${texto}`;
   }
 
 }

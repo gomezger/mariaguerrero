@@ -34,7 +34,7 @@
         </tbody>
       </table>
       <div class="mb-5" *ngIf="cantidades.length > 0">
-        <button type="button" class="col-6 btn btn-success ">Whatsapp <i class="fab fa-whatsapp"></i></button>
+        <button type="button" class="col-6 btn btn-success " (click)="enviarWp()">Whatsapp <i class="fab fa-whatsapp"></i></button>
         <button type="button" class="col-6 btn btn-danger" data-toggle="modal" data-target="#exampleModal">Mail <i class="far fa-envelope"></i></button>
       </div>
 
