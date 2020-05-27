@@ -70,18 +70,17 @@ export class PresupuestoComponent implements OnInit {
     );
   }
 
-  enviarWp(){
-    // <a target="_blank" href="https://api.whatsapp.com/send?phone=54{{informacion.telefono}}&text=¡Hola {{informacion.nombre}}!, me interesa el {{profesional.tipo_profesional.nombre.toLowerCase()}} {{profesional.nombre}}." class="boton col-6">Contactar</a>
-    let telefono='542914411801'; 
-    let texto:String;
-    texto='';
-    this.presupuesto.forEach((element,index)=>{
-      texto.concat(JSON.stringify(element.title) + ' x'+ JSON.stringify(this.cantidades[index])+'-'); 
-    });
-    let mensaje = `Hola Matias, deseo presupuestar esto: ${texto}`;
-    // this._router.navigate([`https://api.whatsapp.com/send?phone=${telefono}&text=${texto}`]);
-    // this._router.navigate([`https://api.whatsapp.com/send?phone=542914411801&text=Hola wacho!`]);
-    window.location.href=`https://api.whatsapp.com/send?phone=${telefono}&text=${texto}`;
+  enviarWp(){ let telefono='542914411801'; 
+    let texto: string = '';
+
+    for(let i=0; i<this.presupuesto.length; i++){
+      texto += '\n \r'+this.presupuesto[i].title+': '+this.cantidades[i]+ ' unidad/es. ';
+    }
+
+    const mensaje: string = 'Hola Matias, deseo presupuestar esto: '+texto+'';
+    const url: string = 'https://api.whatsapp.com/send?phone='+telefono+'&text=' + mensaje + '';
+
+    window.open(url);
   }
 
 }

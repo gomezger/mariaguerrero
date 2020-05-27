@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+		"prod:upload": "ng build --buildOptimizer=true --optimization=true --prod --base-href /"
   },
   "private": true,
   "dependencies": {
