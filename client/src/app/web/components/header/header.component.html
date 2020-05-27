@@ -11,13 +11,12 @@
                 {{ city }}
             </h3>
             <div class="info telefono float-left mr-1">
-                <a href="tel:02914526024">
-                <i class="fas fa-phone mr-1 text-light"></i>
+                <a 
+                [attr.href]="'tel:'+info.phone.cod.int+info.phone.cod.nac+info.phone.number" >
+                <i class="fas fa-phone mr-2 text-light"></i>
                 </a>
                 <span class="d-none d-md-inline-block mr-3">
-                {{ phone.cod.int }}
-                {{ phone.cod.nac }}
-                {{ phone.number }}
+                  ({{info.phone.cod.nac}}) {{info.phone.number}}
                 </span>
             </div>
 

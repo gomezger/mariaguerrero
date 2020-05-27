@@ -48,34 +48,55 @@
         </div>
         <div class="borde corto clearfix mt-1 mb-4"></div>
     
-        <div class="redes float-left p-0 pt-5 ">
+        <div class="redes float-left p-0 pt-3 ">
                 <a 
-                    
+                    *ngIf="info"
                     class="dato text-dark clearfix" 
                     target="_blank">
-                        <i class="fab fa-facebook-square mr-3"></i>Maria Guerrero Muebles
+                    <i class="fad fa-map-marker-alt mr-3"></i>{{info.city}}
                 </a>
+                <div 
+                    class="dato text-dark clearfix" 
+                    >
+                    <span><i class="fad fa-clock mr-3"></i>Horarios:</span>
+                    <div 
+                        class="horary" 
+                        *ngFor="let horary of info.horaries"
+                    >
+                        <i class="fad fa-angle-right ml-4 mr-3"></i><small>{{horary.day}}: {{horary.hour}}</small>
+                    </div>
+                </div>
                 <a 
-                    
+                    *ngIf="info"
+                    [attr.href]="info.social.facebook.url"
                     class="dato text-dark clearfix" 
                     target="_blank">
-                        <i class="fab fa-instagram mr-3"></i>muebleriamariaguerrero
-                </a>
-                <a class="dato text-dark clearfix" target="_blank">
-                        <i class="fab fa-whatsapp mr-3"></i>
-                        +54 29145687
+                        <i class="fab fa-facebook-square mr-3"></i>{{info.social.facebook.name}}
                 </a>
                 <a 
-                    
+                    *ngIf="info"
+                    [attr.href]="info.social.instagram.url"
                     class="dato text-dark clearfix" 
                     target="_blank">
-                        <i class="fas fa-phone mr-3"></i>
-                        29145687
+                        <i class="fab fa-instagram mr-3"></i>{{info.social.instagram.name}}
                 </a>
                 <a 
-                
+                    *ngIf="info"
+                    [attr.href]="'https://api.whatsapp.com/send?phone='+info.social.whatsapp.cod.int+info.social.whatsapp.cod.nac+info.social.whatsapp.number"                 
                     class="dato text-dark clearfix" target="_blank">
-                        <i class="fas fa-at mr-3"></i>emailprueba@gmail.com
+                        <i class="fab fa-whatsapp mr-3"></i>Enviar mensaje
+                </a>
+                <a 
+                    *ngIf="info"
+                    [attr.href]="'tel:'+info.phone.cod.int+info.phone.cod.nac+info.phone.number"                 
+                    class="dato text-dark clearfix" target="_blank">
+                        <i class="fas fa-phone mr-3"></i>({{info.phone.cod.nac}}) {{info.phone.number}}
+                </a>
+                <a 
+                    *ngFor="let mail of info.mails"
+                    [attr.href]="'mailto:'+mail"                  
+                    class="dato text-dark clearfix" target="_blank">
+                        <i class="fas fa-at mr-3"></i>{{mail}}
                 </a>
             </div>
         </div>

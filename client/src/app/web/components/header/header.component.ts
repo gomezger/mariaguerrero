@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   public phone: any;
   public social: any;
   public city: any;
+  public info: any;
 
   constructor(
     private _productService: ProductService
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
     this.phone = Info.phone;
     this.social = Info.social;
     this.city = Info.city;
+    this.info = Info;
   }
 
   navBarTogglerIsVisible() {
