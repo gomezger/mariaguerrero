@@ -79,7 +79,7 @@ export class PresupuestoComponent implements OnInit {
     }
 
     const mensaje: string = 'Hola Maria Guerrero Deco, deseo presupuestar esto: '+texto+'';
-    const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone+'&text=' + mensaje + '';
+    const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
 
     window.open(url);
   }
