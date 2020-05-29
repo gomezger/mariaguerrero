@@ -5,6 +5,7 @@ import {Contacto}from '../../models/contacto';
 import {Product} from '../../models/product';
 import { Title } from '@angular/platform-browser';
 import { Router,Route, ActivatedRoute } from '@angular/router';
+import {Info} from 'src/app/services/info'
 // import {Category}from 'src/app/models/category';
 
 @Component({
@@ -70,15 +71,15 @@ export class PresupuestoComponent implements OnInit {
     );
   }
 
-  enviarWp(){ let telefono='542914411801'; 
+  enviarWp(){ 
     let texto: string = '';
 
     for(let i=0; i<this.presupuesto.length; i++){
       texto += '\n \r'+this.presupuesto[i].title+': '+this.cantidades[i]+ ' unidad/es. ';
     }
 
-    const mensaje: string = 'Hola Matias, deseo presupuestar esto: '+texto+'';
-    const url: string = 'https://api.whatsapp.com/send?phone='+telefono+'&text=' + mensaje + '';
+    const mensaje: string = 'Hola Maria Guerrero Deco, deseo presupuestar esto: '+texto+'';
+    const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone+'&text=' + mensaje + '';
 
     window.open(url);
   }
