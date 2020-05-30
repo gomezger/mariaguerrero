@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild , OnInit } from '@angular/core';
 import {ShopcartService} from '../../services/shopcart.service';
 import {MailSenderService} from 'src/app/services/mail-sender.service';
 import {Contacto}from '../../models/contacto';
@@ -14,6 +14,7 @@ import {Info} from 'src/app/services/info'
   styleUrls: ['./presupuesto.component.scss']
 })
 export class PresupuestoComponent implements OnInit {
+  @ViewChild('botonCerrar') public close ;
 
   public presupuesto:Product [];
   public cantidades:[];
@@ -68,8 +69,9 @@ export class PresupuestoComponent implements OnInit {
         localStorage.removeItem('presupuesto');
         localStorage.removeItem('cantidades');
         console.log('exito');
+        this.close.nativeElement.click();
+        alert('Mensaje enviado');
         window.location.reload();
-
       },
       error=>{}
     );
