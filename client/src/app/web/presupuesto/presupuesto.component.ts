@@ -65,7 +65,11 @@ export class PresupuestoComponent implements OnInit {
     .subscribe(
       response=>{
         console.log(JSON.stringify(this.myContacto));
+        localStorage.removeItem('presupuesto');
+        localStorage.removeItem('cantidades');
         console.log('exito');
+        window.location.reload();
+
       },
       error=>{}
     );
@@ -79,9 +83,14 @@ export class PresupuestoComponent implements OnInit {
     }
 
     const mensaje: string = 'Hola Maria Guerrero Deco, deseo presupuestar esto: '+texto+'';
-    const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
+    // const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
+    const url: string = 'https://api.whatsapp.com/send?phone='+'542914411801'+'&text=' + mensaje + '';
 
     window.open(url);
+    localStorage.removeItem('presupuesto');
+    localStorage.removeItem('cantidades');
+    window.location.reload();
+
   }
 
 }
