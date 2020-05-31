@@ -9,11 +9,11 @@
 </div>
 
 <div class="container">
-  <h3 *ngIf="cantidades.length==0" class=" text-center col-12" style="height: 400px;">
+  <h3 *ngIf=" !cantidades || cantidades==[] || cantidades.length < 1" class=" text-center col-12" style="height: 400px;">
     No hay productos para presupuesto.
   </h3>
 
-    <table class="table table-striped" *ngIf="cantidades.length > 0">
+    <table class="table table-striped" *ngIf="cantidades && cantidades.length > 0">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -33,18 +33,18 @@
           </tr>
         </tbody>
       </table>
-      <div class="mb-5" *ngIf="cantidades.length > 0">
+      <div class="mb-5" *ngIf="cantidades && cantidades.length > 0">
         <button type="button" class="col-6 btn btn-success " (click)="enviarWp()">Whatsapp <i class="fab fa-whatsapp"></i></button>
         <button type="button" class="col-6 btn btn-danger" data-toggle="modal" data-target="#exampleModal">Mail <i class="far fa-envelope"></i></button>
       </div>
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Datos de Email</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button #botonCerrar type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>

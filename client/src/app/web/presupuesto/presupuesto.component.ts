@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild , OnInit } from '@angular/core';
 import {ShopcartService} from '../../services/shopcart.service';
 import {MailSenderService} from 'src/app/services/mail-sender.service';
 import {Contacto}from '../../models/contacto';
 import {Product} from '../../models/product';
 import { Title } from '@angular/platform-browser';
 import { Router,Route, ActivatedRoute } from '@angular/router';
+import {Info} from 'src/app/services/info'
 // import {Category}from 'src/app/models/category';
 
 @Component({
@@ -13,6 +14,7 @@ import { Router,Route, ActivatedRoute } from '@angular/router';
   styleUrls: ['./presupuesto.component.scss']
 })
 export class PresupuestoComponent implements OnInit {
+  @ViewChild('botonCerrar') public close ;
 
   public presupuesto:Product [];
   public cantidades:[];
@@ -64,23 +66,33 @@ export class PresupuestoComponent implements OnInit {
     .subscribe(
       response=>{
         console.log(JSON.stringify(this.myContacto));
+        localStorage.removeItem('presupuesto');
+        localStorage.removeItem('cantidades');
         console.log('exito');
+        this.close.nativeElement.click();
+        alert('Mensaje enviado');
+        window.location.reload();
       },
       error=>{}
     );
   }
 
-  enviarWp(){ let telefono='542914411801'; 
+  enviarWp(){ 
     let texto: string = '';
 
     for(let i=0; i<this.presupuesto.length; i++){
       texto += '\n \r'+this.presupuesto[i].title+': '+this.cantidades[i]+ ' unidad/es. ';
     }
 
-    const mensaje: string = 'Hola Matias, deseo presupuestar esto: '+texto+'';
-    const url: string = 'https://api.whatsapp.com/send?phone='+telefono+'&text=' + mensaje + '';
+    const mensaje: string = 'Hola Maria Guerrero Deco, deseo presupuestar esto: '+texto+'';
+    // const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
+    const url: string = 'https://api.whatsapp.com/send?phone='+'542914411801'+'&text=' + mensaje + '';
 
     window.open(url);
+    localStorage.removeItem('presupuesto');
+    localStorage.removeItem('cantidades');
+    window.location.reload();
+
   }
 
 }
