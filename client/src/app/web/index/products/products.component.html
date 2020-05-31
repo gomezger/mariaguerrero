@@ -3,7 +3,7 @@
       <div class="container text-center pt-3">
           <app-title [title]="'Catálogo'"  id="catalogo" [id]="'catalogo'" [color]="'#EDEDED'"></app-title>
 
-          <a *ngFor="let p of products" [routerLink]="['/producto/123123']" class="products col-12 p-0 text-center">
+          <a *ngFor="let p of products" [routerLink]="['/producto', replaceUrl(p.category.name) , p.id, replaceUrl(p.title)]" class="products col-12 p-0 text-center">
             <div class="product d-inline-block mt-2 mb-2">
                 <div class="content col-12 p-0">
                     <div class="imagen" [style.backgroundImage]="'url('+storage+''+p.images[0]+')'"></div>

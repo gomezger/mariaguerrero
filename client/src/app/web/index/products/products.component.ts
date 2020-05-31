@@ -34,4 +34,8 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  public replaceUrl(cadena: string): string{
+    return this._products.replaceUrl(cadena);
+  }
+
 }

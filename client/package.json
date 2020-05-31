@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-		"prod:upload": "ng build --buildOptimizer=true --optimization=true --prod --base-href /"
+		"prod:upload": "ng build --buildOptimizer=true --optimization=true --prod --base-href https://mariaguerrerodeco.com/"
   },
   "private": true,
   "dependencies": {

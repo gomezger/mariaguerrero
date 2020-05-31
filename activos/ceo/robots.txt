@@ -1,0 +1,4 @@
+User-agent: * 
+Disallow: /assets/
+Disallow: /backend/
+Disallow: /.well-known
