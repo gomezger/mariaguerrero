@@ -40,6 +40,7 @@ Route::group(['middleware' => ['cors']], function () {
 
     //products
     Route::get('products', 'ProductController@getAll');  
+    Route::get('products/quantity/{cant}', 'ProductController@getN');  
     Route::get('products/{id}', 'ProductController@getById');  
 
     // users

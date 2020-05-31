@@ -78,6 +78,14 @@ export class ProductService {
   /**
    * Get all products
    */
+  public getN(cant: number): Observable<any> {
+    const headers = {headers : new HttpHeaders()};
+    return this._http.get(this.url + '/products/quantity/' + cant, headers);
+  }
+  
+  /**
+   * Get all products
+   */
   public getById(id: number): Observable<any> {
     const headers = {headers : new HttpHeaders()};
     return this._http.get(this.url + '/products/' + id, headers);

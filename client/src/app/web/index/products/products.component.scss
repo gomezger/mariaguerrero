@@ -43,23 +43,27 @@
     background-size: 110% auto;
     transition: 0.5s;    
 }
-.product h3{
+.product .title{
     box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.1);
     position: relative;
     margin: 0;
     width: 100%;
-    padding: 20px 0;
+    padding: 20px 0px;
     font-size: 20px;
     font-family: 'Montserrat', cursive;
     color: rgb(255, 255, 255);
     display: inline-block;
     text-shadow: 1px 1px 3px rgb(53, 53, 53);
 }
-.product h3 span{
+.product .title h3{
     position: relative;
     z-index: 5;
+    font-size: 20px;
+    max-height: 20px;
+    overflow: hidden;
+    padding: 0 20px;
 }
-.product h3 .background{
+.product .title .background{
     position: absolute;
     background-image: url('/assets/bg-shop.jpg');
     background-color: rgb(255, 255, 255);

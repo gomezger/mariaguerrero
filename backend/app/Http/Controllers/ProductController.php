@@ -48,6 +48,11 @@ class ProductController extends Controller
         return Response::success('Productos listos','productos',$products);
     }
 
+    public function getN($cant){
+        $products=ProductRepo::findAll($cant);
+        return Response::success('Productos listos','productos',$products);
+    }
+
     public function getById($id){
         $product = ProductRepo::findById($id);
         return Response::success('Producto cargado','producto',$product);

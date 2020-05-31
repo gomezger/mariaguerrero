@@ -12,8 +12,12 @@ class ProductRepo {
         return $product;
     }
     
-    public static function findAll(){
-        $products = Product::all()->load('category');
+    public static function findAll($cant = 0){
+        if($cant!=0)
+            $products = Product::limit($cant)->get()->load('category');
+        else
+            $products = Product::all()->load('category');
+
         foreach($products as $p)
             $p->images = json_decode($p->images);
         return $products;
