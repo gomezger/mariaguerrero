@@ -10,8 +10,8 @@
  * para prod
  */
 export let GLOBAL = {
-	api: 'https://cuidarsaludarg.com/a/api/public',
-	storage: 'https://cuidarsaludarg.com/a/api/storage/app/public/'
+	api: 'https://mariaguerrerodeco.com/api/public',
+	storage: 'https://mariaguerrerodeco.com/api/storage/app/public/'
 };
 
 
