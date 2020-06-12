@@ -1,7 +1,13 @@
 <?php
-$API = 'https://mariaguerrerodeco.com/backend/public/';
+$API = 'https://mariaguerrerodeco.com/api/public/';
 $siteRoot = 'https://mariaguerrerodeco.com/';
 $imagesUrl = 'https://mariaguerrerodeco.com/api/storage/app/public/';
+
+
+$frase = $_GET['frase'];
+$fragmentos = explode("/",$frase);
+if(count($fragmentos)==3)
+	$_GET['id'] = $fragmentos[1];
 
 
 $jsonData = getData($API);
@@ -17,10 +23,10 @@ function getData($api) {
 // Prepare variables for HTML
 function makePage($data, $siteRoot, $imagesUrl) {
     if(isset($data->producto)){
-        $GLOBALS['imageUrl'] = $imagesUrl . $data->producto->imagen_1;
-        $GLOBALS['pageUrl'] = $siteRoot . "producto/" . $data->producto->id;
-        $GLOBALS['title'] = $data->producto->nombre;
-        $GLOBALS['description'] = strip_tags($data->producto->descripcion);
+        $GLOBALS['imageUrl'] = $imagesUrl . $data->producto->images[0];
+        $GLOBALS['pageUrl'] = $siteRoot . "producto/" . $_GET['frase'];
+        $GLOBALS['title'] = $data->producto->title;
+        $GLOBALS['description'] = strip_tags($data->producto->description);
     }else{
         $GLOBALS['imageUrl'] = 'https://mariaguerrerodeco.com/assets/carousel/bg-home-3.jpg';
         $GLOBALS['pageUrl'] = $siteRoot;

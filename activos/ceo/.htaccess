@@ -13,12 +13,12 @@
 	RewriteRule ^/?$ "https\:\/\/mariaguerrerodeco\.com\/" [R=301,L]		
 
 	#redirige el trafico de las redes sociales a un archivo con los meta tag cargados con php
-	#RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
-	#RewriteRule ^producto/(.*)$ https://mariaguerrerodeco.com/producto.php?id=$1 [NC,L]
+	RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
+	RewriteRule ^producto/(.*)$ https://mariaguerrerodeco.com/producto.php?frase=$1 [NC,L]
 	
 	#redirige el trafico de las redes sociales a un archivo con los meta tag cargados con php
-	RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
-	RewriteRule ^producto/(.*)$/(.*)$/(.*)$ https://mariaguerrerodeco.com/producto.php?id=$2 [NC,L]
+	#RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
+	#RewriteRule ^producto/(.*)$/(.*)$/(.*)$ https://mariaguerrerodeco.com/producto.php?id=$2 [NC,L]
 
 	RewriteEngine On
 	RewriteBase /
@@ -31,3 +31,10 @@
 	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 </IfModule>
 
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Configure el paquete “ea-php73” como el lenguaje de programación predeterminado “PHP”.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

@@ -40,7 +40,7 @@ export class FilterService {
       if(element.category.id === category_id)
         auxList.push(element);
     });
-    console.log(auxList);
+    //console.log(auxList);
     return auxList;
   }
 

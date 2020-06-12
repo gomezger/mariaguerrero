@@ -37,9 +37,11 @@ export class ProductsComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
+    const id_nueva = +this._route.snapshot.paramMap.get('id');
+
     //verifica si cambio la categoria
-    if(this.category_id!=+this._route.snapshot.paramMap.get('id')){
-      this.category_id = +this._route.snapshot.paramMap.get('id');
+    if( this.category_id != id_nueva && id_nueva!=0 ){  
+      this.category_id = id_nueva;
       this.filtrarCategory();
     }
   }
