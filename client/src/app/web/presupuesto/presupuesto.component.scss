@@ -27,5 +27,23 @@ h2{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
+    min-height: 60vh;
+}
+
+.product-conten{    
+    min-height: 65vh;
+}
+
+
+
+@media only screen and (max-width: 1199px) { 
+    .title{
+        background-size: auto 100% !important;
+    }
+
+    h2{
+        font-size: 30px;
+        padding: 15px 0;
+    }
+
 }

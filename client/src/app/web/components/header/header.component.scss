@@ -63,6 +63,9 @@ header .info.telefono{
     transition: 0.5s;
 }
 
+.navbar .navbar-nav .nav-item a.nav-link .icon{    
+    margin-top: 2px;
+}
 
 
 .flag-selection{
@@ -80,10 +83,10 @@ header .info.telefono{
         width: 100%;
     }
     .nav-item{
-        text-align: center !important;
+        text-align: left !important;
     } 
     .nav-link{
-        text-align: center;
+        text-align: left;
         padding: 8px !important;
         font-size: 17px !important;
     }

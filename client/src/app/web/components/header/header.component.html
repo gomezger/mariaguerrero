@@ -46,7 +46,7 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav navbar-right ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item active ">
           <a class="nav-link" (click)="collapseNav();" [routerLink]="['/']">inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
@@ -64,7 +64,8 @@
           <a class="nav-link" (click)="collapseNav();" [routerLink]="['/contacto']">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/presupuesto']"><i class="fas fa-clipboard-list"></i>
+          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/presupuesto']">
+            <i class="fas fa-clipboard-list icon mr-2 float-left"></i>Presupuesto
           </a>
         </li>
       </ul>

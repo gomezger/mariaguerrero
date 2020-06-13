@@ -38,12 +38,12 @@ export class ModelDeleteComponent implements OnInit {
           this.deleteCategoryView.emit(this.category);
         
         }else if(response.status == 'error'){
-          this.setMessage('alert-delete','alert-danger',response.errors);
+          this.setMessage('alert-delete-'+this.category.id,'alert-danger',response.errors);
         }
         
       },
       (error) => {
-        this.setMessage('alert-delete','alert-danger','Error al cargar los productos. Recargue la pantalla y verifique conexión de internet');
+        this.setMessage('alert-delete-'+this.category.id,'alert-danger','Error al cargar los productos. Recargue la pantalla y verifique conexión de internet');
       }
     );
   }

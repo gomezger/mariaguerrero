@@ -29,29 +29,14 @@ export class PresupuestoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // let p1:Product;
-    // let p2:Product;
-    // let p3:Product;
-    // p1 = new Product(1,'Producto Prueba 1',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
-    // p2 = new Product(1,'Producto Prueba 2',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
-    // p3 = new Product(1,'Producto Prueba 3',1,new Category(1,'test',null,null),null,'sadasjdgasjdgadads',null,null);
-
-    // this._shopcart.saveProduct(p1,2);
-    // this._shopcart.saveProduct(p2,1);
-    // this._shopcart.saveProduct(p3,5);
-
     this.presupuesto= this._shopcart.getProducts();
-    this.cantidades =this._shopcart.getCantidades();
-
-    console.log(this.presupuesto);
-    console.log(this.cantidades);
-
-    
+    this.cantidades =this._shopcart.getCantidades();    
     this._title.setTitle('Presupuesto | Maria Guerrero: Muebles y objetos | Bahía Blanca');  
+
+
   }
 
   eliminarElemento(i){
-    console.log(i)
     this.presupuesto.splice(i,1);
     this.cantidades.splice(i,1);
     this._shopcart.eliminar(i);
@@ -81,11 +66,11 @@ export class PresupuestoComponent implements OnInit {
     let texto: string = '';
 
     for(let i=0; i<this.presupuesto.length; i++){
-      texto += '\n \r'+this.presupuesto[i].title+': '+this.cantidades[i]+ ' unidad/es. ';
-    }
+      texto += '\r\n\t ' + this.presupuesto[i].title + ': ' + this.cantidades[i] + ' unidad/es. ';
+    }    
 
     const mensaje: string = 'Hola Maria Guerrero Deco, deseo presupuestar esto: '+texto+'';
-    // const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
+    //const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
     const url: string = 'https://api.whatsapp.com/send?phone='+'542914411801'+'&text=' + mensaje + '';
 
     window.open(url);

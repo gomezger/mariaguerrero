@@ -8,24 +8,29 @@
     </div>
 </div>
 
-<div class="container no-product-conten">
-  <h3 *ngIf=" !cantidades || cantidades==[] || cantidades.length < 1" class=" text-center col-12" >
-    No hay productos para presupuesto.
-  </h3>
+<div *ngIf=" !cantidades || cantidades==[] || cantidades.length < 1"  class="container no-product-conten text-center">
+  <div class="text-center col-12 float-left">
+    <h3>No hay productos para presupuesto.</h3>
+    <a [routerLink]="['/productos']" class="btn btn-danger mt-3" data-toggle="modal" data-target="#exampleModal">Ver productos</a>
+  </div>
+</div>
 
-    <table class="table table-striped" *ngIf="cantidades && cantidades.length > 0">
+<div class="container product-conten" *ngIf="!( !cantidades || cantidades==[] || cantidades.length < 1)">
+
+    <div class="table-list table-responsive">
+      <table class="table table-striped col-12 p-0" *ngIf="cantidades && cantidades.length > 0">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Titulo</th>
-            <th scope="col">Categoria</th>
+            <th scope="col">Categoría</th>
             <th scope="col">Cantidad</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor= "let product of presupuesto;let i = index;">
-            <th scope="row">{{i}}</th>
+            <td><i class="fad fa-chevron-right"></i></td>
             <td>{{product.title}}</td>
             <td>{{product.category.name}}</td>
             <td>{{cantidades[i]}}</td>
@@ -33,9 +38,15 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
       <div class="mb-5" *ngIf="cantidades && cantidades.length > 0">
-        <button type="button" class="col-6 btn btn-success " (click)="enviarWp()">Whatsapp <i class="fab fa-whatsapp"></i></button>
-        <button type="button" class="col-6 btn btn-danger" data-toggle="modal" data-target="#exampleModal">Mail <i class="far fa-envelope"></i></button>
+        <div class="col-12 col-md-6 pl-0 pr-0 pr-md-1 d-inline-block">
+          <button type="button" class="col-12 btn btn-success " (click)="enviarWp()">Enviar por Whatsapp <i class="mr-2 fab fa-whatsapp"></i></button>
+        </div>
+        <div class="col-12 col-md-6 pr-0 pl-0 pl-md-1 pt-2 pt-md-0 d-inline-block">
+          <button type="button" class="col-12 btn btn-danger" data-toggle="modal" data-target="#exampleModal">Enviar por Mail <i class="mr-2 far fa-envelope"></i></button>
+        </div>
       </div>
 
       <!-- Modal -->
