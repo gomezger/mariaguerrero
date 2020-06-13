@@ -12,7 +12,7 @@ class SendEmailController extends Controller
     protected $data;
 
     public function __construct(){
-        $this->to = 'xeron08@hotmail.com';
+        $this->to = 'info@mariaguerrerodeco.com	';
     }
 
 

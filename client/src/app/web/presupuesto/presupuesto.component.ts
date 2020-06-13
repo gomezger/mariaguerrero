@@ -5,8 +5,8 @@ import {Contacto}from '../../models/contacto';
 import {Product} from '../../models/product';
 import { Title } from '@angular/platform-browser';
 import { Router,Route, ActivatedRoute } from '@angular/router';
-import {Info} from 'src/app/services/info'
-// import {Category}from 'src/app/models/category';
+import {Info} from '../../services/info'
+import {Category}from '../../models/category';
 
 @Component({
   selector: 'app-presupuesto',
@@ -70,8 +70,8 @@ export class PresupuestoComponent implements OnInit {
     }    
 
     const mensaje: string = 'Hola Maria Guerrero Deco, deseo presupuestar esto: '+texto+'';
-    //const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
-    const url: string = 'https://api.whatsapp.com/send?phone='+'542914411801'+'&text=' + mensaje + '';
+    const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
+    //const url: string = 'https://api.whatsapp.com/send?phone='+'542914411801'+'&text=' + mensaje + '';
 
     window.open(url);
     localStorage.removeItem('presupuesto');
