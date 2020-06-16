@@ -28,7 +28,6 @@ export let Info = {
         },
     },
     mails: [
-        "mariaguerrero@speedy.com.ar",
         "mariaguerrerodeco@hotmail.com" 
     ],
     horaries: [
