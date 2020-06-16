@@ -70,7 +70,7 @@ export class PresupuestoComponent implements OnInit {
     }    
 
     const mensaje: string = 'Hola Maria Guerrero Deco, deseo presupuestar esto: '+texto+'';
-    const url: string = 'https://api.whatsapp.com/send?phone='+Info.phone.cod.int+Info.phone.cod.nac+Info.phone.number+'&text=' + mensaje + '';
+    const url: string = 'https://api.whatsapp.com/send?phone='+Info.social.whatsapp.cod.int+Info.social.whatsapp.cod.nac+Info.social.whatsapp.number+'&text=' + mensaje + '';
     //const url: string = 'https://api.whatsapp.com/send?phone='+'542914411801'+'&text=' + mensaje + '';
 
     window.open(url);
