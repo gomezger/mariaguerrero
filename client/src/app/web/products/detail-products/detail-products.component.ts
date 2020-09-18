@@ -39,15 +39,32 @@ export class DetailProductsComponent implements OnInit {
           this.product = response.producto;
           this.mainPhoto = this.product.images[0];
           this.photos = this.product.images;
-          this.photos.splice(0,1);
-          
-          this._title.setTitle(this.product.title+' | ' + this.product.category.name + ' | Maria Guerrero: Muebles y objetos | Bahía Blanca');    
+          this.photos.splice(0,1);          
+          this._title.setTitle(this.product.title+' | ' + this.product.category.name + ' | Maria Guerrero: Muebles y objetos | Bahía Blanca');  
+          this.setAnchoImagenes();
         }
       },
       (error)=>{
 
       }
     );
+  }
+
+  private setAnchoImagenes(){
+    for(let imagen of this.product.images){
+      const index = this.product.images.indexOf(imagen);
+
+      let img = new Image();
+      img.src = this.storage + '' + imagen;
+
+      img.onload = function () {
+        const alto = img.naturalWidth;
+        const ancho = img.naturalHeight;
+        const element = document.getElementById('imagen-'+index); 
+        (alto>ancho) ? element.classList.add('imagen-vertical') : element.classList.add('imagen-horizontal');        
+      };      
+
+    }
   }
 
   enviarPresupuestar(){

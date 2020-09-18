@@ -12,8 +12,8 @@
           <li *ngFor="let image of photos; let indexOfelement=index;" data-target="#carouselExampleIndicators" [attr.data-slide-to]="indexOfelement+1"></li>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active" [style.backgroundImage]="'url('+ storage + '' + mainPhoto + ')'"></div>
-          <div *ngFor="let image of photos" class="carousel-item" [style.backgroundImage]="'url('+ storage + '' + image + ')'"></div>
+          <div id="imagen-0" class="carousel-item active" [style.backgroundImage]="'url('+ storage + '' + mainPhoto + ')'"></div>
+          <div *ngFor="let image of photos; let i=index;" [id]="'imagen-'+i" class="carousel-item" [style.backgroundImage]="'url('+ storage + '' + image + ')'"></div>
         </div>
       </div>
 
