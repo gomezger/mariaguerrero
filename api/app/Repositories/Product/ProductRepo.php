@@ -5,16 +5,16 @@ use App\Models\Product;
 use App\Exceptions\ProductException;
 
 class ProductRepo {
-    
+
     public static function findById($id){
         $product =  Product::find($id)->load('category');
         $product->images = json_decode($product->images);
         return $product;
     }
-    
+
     public static function findAll($cant = 0){
         if($cant!=0)
-            $products = Product::limit($cant)->get()->load('category');
+            $products = Product::inRandomOrder()->limit($cant)->get()->load('category');
         else
             $products = Product::all()->load('category');
 
@@ -48,6 +48,6 @@ class ProductRepo {
         return Product::create($params);
     }
 
-    public static function getProductByCategory($category){} 
+    public static function getProductByCategory($category){}
 
 }
